@@ -1,0 +1,2139 @@
+[
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "os.path",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.path",
+        "description": "os.path",
+        "detail": "os.path",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "ArgumentParser",
+        "importPath": "argparse",
+        "description": "argparse",
+        "isExtraImport": true,
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Container",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "TextIO",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "cast",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Container",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Set",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "pdfminer",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdfminer",
+        "description": "pdfminer",
+        "detail": "pdfminer",
+        "documentation": {}
+    },
+    {
+        "label": "PDFDocument",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFNoOutlines",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFXRefFallback",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFIOError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFObjectNotFound",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFTypeError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFValueError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFValueError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFPage",
+        "importPath": "pdfminer.pdfpage",
+        "description": "pdfminer.pdfpage",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfpage",
+        "documentation": {}
+    },
+    {
+        "label": "PDFParser",
+        "importPath": "pdfminer.pdfparser",
+        "description": "pdfminer.pdfparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfparser",
+        "documentation": {}
+    },
+    {
+        "label": "PDFObjRef",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "PDFStream",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "resolve1",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "stream_value",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "LIT",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "PSKeyword",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "PSLiteral",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "isnumber",
+        "importPath": "pdfminer.utils",
+        "description": "pdfminer.utils",
+        "isExtraImport": true,
+        "detail": "pdfminer.utils",
+        "documentation": {}
+    },
+    {
+        "label": "AnyIO",
+        "importPath": "pdfminer.utils",
+        "description": "pdfminer.utils",
+        "isExtraImport": true,
+        "detail": "pdfminer.utils",
+        "documentation": {}
+    },
+    {
+        "label": "pdfminer.high_level",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdfminer.high_level",
+        "description": "pdfminer.high_level",
+        "detail": "pdfminer.high_level",
+        "documentation": {}
+    },
+    {
+        "label": "LAParams",
+        "importPath": "pdfminer.layout",
+        "description": "pdfminer.layout",
+        "isExtraImport": true,
+        "detail": "pdfminer.layout",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "UploadFile",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Limiter",
+        "importPath": "slowapi",
+        "description": "slowapi",
+        "isExtraImport": true,
+        "detail": "slowapi",
+        "documentation": {}
+    },
+    {
+        "label": "_rate_limit_exceeded_handler",
+        "importPath": "slowapi",
+        "description": "slowapi",
+        "isExtraImport": true,
+        "detail": "slowapi",
+        "documentation": {}
+    },
+    {
+        "label": "Limiter",
+        "importPath": "slowapi",
+        "description": "slowapi",
+        "isExtraImport": true,
+        "detail": "slowapi",
+        "documentation": {}
+    },
+    {
+        "label": "_rate_limit_exceeded_handler",
+        "importPath": "slowapi",
+        "description": "slowapi",
+        "isExtraImport": true,
+        "detail": "slowapi",
+        "documentation": {}
+    },
+    {
+        "label": "get_remote_address",
+        "importPath": "slowapi.util",
+        "description": "slowapi.util",
+        "isExtraImport": true,
+        "detail": "slowapi.util",
+        "documentation": {}
+    },
+    {
+        "label": "get_remote_address",
+        "importPath": "slowapi.util",
+        "description": "slowapi.util",
+        "isExtraImport": true,
+        "detail": "slowapi.util",
+        "documentation": {}
+    },
+    {
+        "label": "ChatRequest",
+        "importPath": "app.schemas.chat",
+        "description": "app.schemas.chat",
+        "isExtraImport": true,
+        "detail": "app.schemas.chat",
+        "documentation": {}
+    },
+    {
+        "label": "ChatResponse",
+        "importPath": "app.schemas.chat",
+        "description": "app.schemas.chat",
+        "isExtraImport": true,
+        "detail": "app.schemas.chat",
+        "documentation": {}
+    },
+    {
+        "label": "SourceDocument",
+        "importPath": "app.schemas.chat",
+        "description": "app.schemas.chat",
+        "isExtraImport": true,
+        "detail": "app.schemas.chat",
+        "documentation": {}
+    },
+    {
+        "label": "HealthResponse",
+        "importPath": "app.schemas.chat",
+        "description": "app.schemas.chat",
+        "isExtraImport": true,
+        "detail": "app.schemas.chat",
+        "documentation": {}
+    },
+    {
+        "label": "rag_engine_pro",
+        "importPath": "app.core.rag_engine_pro",
+        "description": "app.core.rag_engine_pro",
+        "isExtraImport": true,
+        "detail": "app.core.rag_engine_pro",
+        "documentation": {}
+    },
+    {
+        "label": "rag_engine_pro",
+        "importPath": "app.core.rag_engine_pro",
+        "description": "app.core.rag_engine_pro",
+        "isExtraImport": true,
+        "detail": "app.core.rag_engine_pro",
+        "documentation": {}
+    },
+    {
+        "label": "conversation_service",
+        "importPath": "app.services.conversation_service",
+        "description": "app.services.conversation_service",
+        "isExtraImport": true,
+        "detail": "app.services.conversation_service",
+        "documentation": {}
+    },
+    {
+        "label": "conversation_service",
+        "importPath": "app.services.conversation_service",
+        "description": "app.services.conversation_service",
+        "isExtraImport": true,
+        "detail": "app.services.conversation_service",
+        "documentation": {}
+    },
+    {
+        "label": "structlog",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "structlog",
+        "description": "structlog",
+        "detail": "structlog",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "ValidationError",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "field_validator",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "app.core.config",
+        "description": "app.core.config",
+        "isExtraImport": true,
+        "detail": "app.core.config",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "app.core.config",
+        "description": "app.core.config",
+        "isExtraImport": true,
+        "detail": "app.core.config",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "app.core.config",
+        "description": "app.core.config",
+        "isExtraImport": true,
+        "detail": "app.core.config",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "app.core.config",
+        "description": "app.core.config",
+        "isExtraImport": true,
+        "detail": "app.core.config",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "app.core.config",
+        "description": "app.core.config",
+        "isExtraImport": true,
+        "detail": "app.core.config",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "app.core.config",
+        "description": "app.core.config",
+        "isExtraImport": true,
+        "detail": "app.core.config",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "app.core.config",
+        "description": "app.core.config",
+        "isExtraImport": true,
+        "detail": "app.core.config",
+        "documentation": {}
+    },
+    {
+        "label": "llm_service",
+        "importPath": "app.services.llm_service",
+        "description": "app.services.llm_service",
+        "isExtraImport": true,
+        "detail": "app.services.llm_service",
+        "documentation": {}
+    },
+    {
+        "label": "llm_service",
+        "importPath": "app.services.llm_service",
+        "description": "app.services.llm_service",
+        "isExtraImport": true,
+        "detail": "app.services.llm_service",
+        "documentation": {}
+    },
+    {
+        "label": "vector_store",
+        "importPath": "app.services.vector_store",
+        "description": "app.services.vector_store",
+        "isExtraImport": true,
+        "detail": "app.services.vector_store",
+        "documentation": {}
+    },
+    {
+        "label": "vector_store",
+        "importPath": "app.services.vector_store",
+        "description": "app.services.vector_store",
+        "isExtraImport": true,
+        "detail": "app.services.vector_store",
+        "documentation": {}
+    },
+    {
+        "label": "vector_store",
+        "importPath": "app.services.vector_store",
+        "description": "app.services.vector_store",
+        "isExtraImport": true,
+        "detail": "app.services.vector_store",
+        "documentation": {}
+    },
+    {
+        "label": "vector_store",
+        "importPath": "app.services.vector_store",
+        "description": "app.services.vector_store",
+        "isExtraImport": true,
+        "detail": "app.services.vector_store",
+        "documentation": {}
+    },
+    {
+        "label": "vector_store",
+        "importPath": "app.services.vector_store",
+        "description": "app.services.vector_store",
+        "isExtraImport": true,
+        "detail": "app.services.vector_store",
+        "documentation": {}
+    },
+    {
+        "label": "JSONResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "JSONResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "process_and_upload_document",
+        "importPath": "app.services.document_processor",
+        "description": "app.services.document_processor",
+        "isExtraImport": true,
+        "detail": "app.services.document_processor",
+        "documentation": {}
+    },
+    {
+        "label": "document_processor",
+        "importPath": "app.services.document_processor",
+        "description": "app.services.document_processor",
+        "isExtraImport": true,
+        "detail": "app.services.document_processor",
+        "documentation": {}
+    },
+    {
+        "label": "document_processor",
+        "importPath": "app.services.document_processor",
+        "description": "app.services.document_processor",
+        "isExtraImport": true,
+        "detail": "app.services.document_processor",
+        "documentation": {}
+    },
+    {
+        "label": "BaseSettings",
+        "importPath": "pydantic_settings",
+        "description": "pydantic_settings",
+        "isExtraImport": true,
+        "detail": "pydantic_settings",
+        "documentation": {}
+    },
+    {
+        "label": "SettingsConfigDict",
+        "importPath": "pydantic_settings",
+        "description": "pydantic_settings",
+        "isExtraImport": true,
+        "detail": "pydantic_settings",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "QAResponse",
+        "importPath": "app.schemas.qa_response",
+        "description": "app.schemas.qa_response",
+        "isExtraImport": true,
+        "detail": "app.schemas.qa_response",
+        "documentation": {}
+    },
+    {
+        "label": "QAResponse",
+        "importPath": "app.schemas.qa_response",
+        "description": "app.schemas.qa_response",
+        "isExtraImport": true,
+        "detail": "app.schemas.qa_response",
+        "documentation": {}
+    },
+    {
+        "label": "QAResponse",
+        "importPath": "app.schemas.qa_response",
+        "description": "app.schemas.qa_response",
+        "isExtraImport": true,
+        "detail": "app.schemas.qa_response",
+        "documentation": {}
+    },
+    {
+        "label": "MultiQueryResponse",
+        "importPath": "app.schemas.qa_response",
+        "description": "app.schemas.qa_response",
+        "isExtraImport": true,
+        "detail": "app.schemas.qa_response",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationalRetrievalChain",
+        "importPath": "langchain.chains",
+        "description": "langchain.chains",
+        "isExtraImport": true,
+        "detail": "langchain.chains",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationBufferMemory",
+        "importPath": "langchain.memory",
+        "description": "langchain.memory",
+        "isExtraImport": true,
+        "detail": "langchain.memory",
+        "documentation": {}
+    },
+    {
+        "label": "ChatPromptTemplate",
+        "importPath": "langchain.prompts",
+        "description": "langchain.prompts",
+        "isExtraImport": true,
+        "detail": "langchain.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "langchain.schema",
+        "description": "langchain.schema",
+        "isExtraImport": true,
+        "detail": "langchain.schema",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "langchain.schema",
+        "description": "langchain.schema",
+        "isExtraImport": true,
+        "detail": "langchain.schema",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "langchain.schema",
+        "description": "langchain.schema",
+        "isExtraImport": true,
+        "detail": "langchain.schema",
+        "documentation": {}
+    },
+    {
+        "label": "JsonOutputParser",
+        "importPath": "langchain_core.output_parsers",
+        "description": "langchain_core.output_parsers",
+        "isExtraImport": true,
+        "detail": "langchain_core.output_parsers",
+        "documentation": {}
+    },
+    {
+        "label": "RunnableParallel",
+        "importPath": "langchain_core.runnables",
+        "description": "langchain_core.runnables",
+        "isExtraImport": true,
+        "detail": "langchain_core.runnables",
+        "documentation": {}
+    },
+    {
+        "label": "RunnablePassthrough",
+        "importPath": "langchain_core.runnables",
+        "description": "langchain_core.runnables",
+        "isExtraImport": true,
+        "detail": "langchain_core.runnables",
+        "documentation": {}
+    },
+    {
+        "label": "ChatPromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "render_markdown",
+        "importPath": "app.core.markdown_renderer",
+        "description": "app.core.markdown_renderer",
+        "isExtraImport": true,
+        "detail": "app.core.markdown_renderer",
+        "documentation": {}
+    },
+    {
+        "label": "render_simple_markdown",
+        "importPath": "app.core.markdown_renderer",
+        "description": "app.core.markdown_renderer",
+        "isExtraImport": true,
+        "detail": "app.core.markdown_renderer",
+        "documentation": {}
+    },
+    {
+        "label": "robust_parser",
+        "importPath": "app.core.json_parser",
+        "description": "app.core.json_parser",
+        "isExtraImport": true,
+        "detail": "app.core.json_parser",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "sqlite3",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlite3",
+        "description": "sqlite3",
+        "detail": "sqlite3",
+        "documentation": {}
+    },
+    {
+        "label": "RecursiveCharacterTextSplitter",
+        "importPath": "langchain.text_splitter",
+        "description": "langchain.text_splitter",
+        "isExtraImport": true,
+        "detail": "langchain.text_splitter",
+        "documentation": {}
+    },
+    {
+        "label": "PyMuPDFLoader",
+        "importPath": "langchain_community.document_loaders",
+        "description": "langchain_community.document_loaders",
+        "isExtraImport": true,
+        "detail": "langchain_community.document_loaders",
+        "documentation": {}
+    },
+    {
+        "label": "TextLoader",
+        "importPath": "langchain_community.document_loaders",
+        "description": "langchain_community.document_loaders",
+        "isExtraImport": true,
+        "detail": "langchain_community.document_loaders",
+        "documentation": {}
+    },
+    {
+        "label": "ChatGroq",
+        "importPath": "langchain_groq",
+        "description": "langchain_groq",
+        "isExtraImport": true,
+        "detail": "langchain_groq",
+        "documentation": {}
+    },
+    {
+        "label": "PineconeVectorStore",
+        "importPath": "langchain_pinecone",
+        "description": "langchain_pinecone",
+        "isExtraImport": true,
+        "detail": "langchain_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain_huggingface",
+        "description": "langchain_huggingface",
+        "isExtraImport": true,
+        "detail": "langchain_huggingface",
+        "documentation": {}
+    },
+    {
+        "label": "Pinecone",
+        "importPath": "pinecone",
+        "description": "pinecone",
+        "isExtraImport": true,
+        "detail": "pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "ServerlessSpec",
+        "importPath": "pinecone",
+        "description": "pinecone",
+        "isExtraImport": true,
+        "detail": "pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "Pinecone",
+        "importPath": "pinecone",
+        "description": "pinecone",
+        "isExtraImport": true,
+        "detail": "pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "RateLimitExceeded",
+        "importPath": "slowapi.errors",
+        "description": "slowapi.errors",
+        "isExtraImport": true,
+        "detail": "slowapi.errors",
+        "documentation": {}
+    },
+    {
+        "label": "chat",
+        "importPath": "app.api.routes",
+        "description": "app.api.routes",
+        "isExtraImport": true,
+        "detail": "app.api.routes",
+        "documentation": {}
+    },
+    {
+        "label": "health",
+        "importPath": "app.api.routes",
+        "description": "app.api.routes",
+        "isExtraImport": true,
+        "detail": "app.api.routes",
+        "documentation": {}
+    },
+    {
+        "label": "conversations",
+        "importPath": "app.api.routes",
+        "description": "app.api.routes",
+        "isExtraImport": true,
+        "detail": "app.api.routes",
+        "documentation": {}
+    },
+    {
+        "label": "memory",
+        "importPath": "app.api.routes",
+        "description": "app.api.routes",
+        "isExtraImport": true,
+        "detail": "app.api.routes",
+        "documentation": {}
+    },
+    {
+        "label": "upload",
+        "importPath": "app.api.routes",
+        "description": "app.api.routes",
+        "isExtraImport": true,
+        "detail": "app.api.routes",
+        "documentation": {}
+    },
+    {
+        "label": "escape",
+        "kind": 2,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "def escape(s: Union[str, bytes]) -> str:\n    if isinstance(s, bytes):\n        us = str(s, \"latin-1\")\n    else:\n        us = s\n    return ESC_PAT.sub(lambda m: \"&#%d;\" % ord(m.group(0)), us)\ndef dumpxml(out: TextIO, obj: object, codec: Optional[str] = None) -> None:\n    if obj is None:\n        out.write(\"<null />\")\n        return",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpxml",
+        "kind": 2,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "def dumpxml(out: TextIO, obj: object, codec: Optional[str] = None) -> None:\n    if obj is None:\n        out.write(\"<null />\")\n        return\n    if isinstance(obj, dict):\n        out.write('<dict size=\"%d\">\\n' % len(obj))\n        for k, v in obj.items():\n            out.write(\"<key>%s</key>\\n\" % k)\n            out.write(\"<value>\")\n            dumpxml(out, v)",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumptrailers",
+        "kind": 2,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "def dumptrailers(\n    out: TextIO,\n    doc: PDFDocument,\n    show_fallback_xref: bool = False,\n) -> None:\n    for xref in doc.xrefs:\n        if not isinstance(xref, PDFXRefFallback) or show_fallback_xref:\n            out.write(\"<trailer>\\n\")\n            dumpxml(out, xref.get_trailer())\n            out.write(\"\\n</trailer>\\n\\n\")",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpallobjs",
+        "kind": 2,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "def dumpallobjs(\n    out: TextIO,\n    doc: PDFDocument,\n    codec: Optional[str] = None,\n    show_fallback_xref: bool = False,\n) -> None:\n    visited = set()\n    out.write(\"<pdf>\")\n    for xref in doc.xrefs:\n        for objid in xref.get_objids():",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpoutline",
+        "kind": 2,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "def dumpoutline(\n    outfp: TextIO,\n    fname: str,\n    objids: Any,\n    pagenos: Container[int],\n    password: str = \"\",\n    dumpall: bool = False,\n    codec: Optional[str] = None,\n    extractdir: Optional[str] = None,\n) -> None:",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "extractembedded",
+        "kind": 2,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "def extractembedded(fname: str, password: str, extractdir: str) -> None:\n    def extract1(objid: int, obj: Dict[str, Any]) -> None:\n        filename = os.path.basename(obj.get(\"UF\") or cast(bytes, obj.get(\"F\")).decode())\n        fileref = obj[\"EF\"].get(\"UF\") or obj[\"EF\"].get(\"F\")\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            error_msg = (\n                \"unable to process PDF: reference for %r is not a \"\n                \"PDFStream\" % filename\n            )",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumppdf",
+        "kind": 2,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "def dumppdf(\n    outfp: TextIO,\n    fname: str,\n    objids: Iterable[int],\n    pagenos: Container[int],\n    password: str = \"\",\n    dumpall: bool = False,\n    codec: Optional[str] = None,\n    extractdir: Optional[str] = None,\n    show_fallback_xref: bool = False,",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "create_parser",
+        "kind": 2,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "def create_parser() -> ArgumentParser:\n    parser = ArgumentParser(description=__doc__, add_help=True)\n    parser.add_argument(\n        \"files\",\n        type=str,\n        default=None,\n        nargs=\"+\",\n        help=\"One or more paths to PDF files.\",\n    )\n    parser.add_argument(",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "def main(argv: Optional[List[str]] = None) -> None:\n    parser = create_parser()\n    args = parser.parse_args(args=argv)\n    if args.debug:\n        logging.getLogger().setLevel(logging.DEBUG)\n    if args.outfile == \"-\":\n        outfp = sys.stdout\n    else:\n        outfp = open(args.outfile, \"w\")\n    if args.objects:",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nESC_PAT = re.compile(r'[\\000-\\037&<>()\"\\042\\047\\134\\177-\\377]')\ndef escape(s: Union[str, bytes]) -> str:\n    if isinstance(s, bytes):\n        us = str(s, \"latin-1\")\n    else:\n        us = s\n    return ESC_PAT.sub(lambda m: \"&#%d;\" % ord(m.group(0)), us)\ndef dumpxml(out: TextIO, obj: object, codec: Optional[str] = None) -> None:\n    if obj is None:",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "ESC_PAT",
+        "kind": 5,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "ESC_PAT = re.compile(r'[\\000-\\037&<>()\"\\042\\047\\134\\177-\\377]')\ndef escape(s: Union[str, bytes]) -> str:\n    if isinstance(s, bytes):\n        us = str(s, \"latin-1\")\n    else:\n        us = s\n    return ESC_PAT.sub(lambda m: \"&#%d;\" % ord(m.group(0)), us)\ndef dumpxml(out: TextIO, obj: object, codec: Optional[str] = None) -> None:\n    if obj is None:\n        out.write(\"<null />\")",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "LITERAL_FILESPEC",
+        "kind": 5,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "LITERAL_FILESPEC = LIT(\"Filespec\")\nLITERAL_EMBEDDEDFILE = LIT(\"EmbeddedFile\")\ndef extractembedded(fname: str, password: str, extractdir: str) -> None:\n    def extract1(objid: int, obj: Dict[str, Any]) -> None:\n        filename = os.path.basename(obj.get(\"UF\") or cast(bytes, obj.get(\"F\")).decode())\n        fileref = obj[\"EF\"].get(\"UF\") or obj[\"EF\"].get(\"F\")\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            error_msg = (\n                \"unable to process PDF: reference for %r is not a \"",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "LITERAL_EMBEDDEDFILE",
+        "kind": 5,
+        "importPath": ".venv.Scripts.dumppdf",
+        "description": ".venv.Scripts.dumppdf",
+        "peekOfCode": "LITERAL_EMBEDDEDFILE = LIT(\"EmbeddedFile\")\ndef extractembedded(fname: str, password: str, extractdir: str) -> None:\n    def extract1(objid: int, obj: Dict[str, Any]) -> None:\n        filename = os.path.basename(obj.get(\"UF\") or cast(bytes, obj.get(\"F\")).decode())\n        fileref = obj[\"EF\"].get(\"UF\") or obj[\"EF\"].get(\"F\")\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            error_msg = (\n                \"unable to process PDF: reference for %r is not a \"\n                \"PDFStream\" % filename",
+        "detail": ".venv.Scripts.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "float_or_disabled",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pdf2txt",
+        "description": ".venv.Scripts.pdf2txt",
+        "peekOfCode": "def float_or_disabled(x: str) -> Optional[float]:\n    if x.lower().strip() == \"disabled\":\n        return None\n    try:\n        return float(x)\n    except ValueError:\n        raise argparse.ArgumentTypeError(f\"invalid float value: {x}\")\ndef extract_text(\n    files: Iterable[str] = [],\n    outfile: str = \"-\",",
+        "detail": ".venv.Scripts.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "extract_text",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pdf2txt",
+        "description": ".venv.Scripts.pdf2txt",
+        "peekOfCode": "def extract_text(\n    files: Iterable[str] = [],\n    outfile: str = \"-\",\n    laparams: Optional[LAParams] = None,\n    output_type: str = \"text\",\n    codec: str = \"utf-8\",\n    strip_control: bool = False,\n    maxpages: int = 0,\n    page_numbers: Optional[Container[int]] = None,\n    password: str = \"\",",
+        "detail": ".venv.Scripts.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "create_parser",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pdf2txt",
+        "description": ".venv.Scripts.pdf2txt",
+        "peekOfCode": "def create_parser() -> argparse.ArgumentParser:\n    parser = argparse.ArgumentParser(description=__doc__, add_help=True)\n    parser.add_argument(\n        \"files\",\n        type=str,\n        default=None,\n        nargs=\"+\",\n        help=\"One or more paths to PDF files.\",\n    )\n    parser.add_argument(",
+        "detail": ".venv.Scripts.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "parse_args",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pdf2txt",
+        "description": ".venv.Scripts.pdf2txt",
+        "peekOfCode": "def parse_args(args: Optional[List[str]]) -> argparse.Namespace:\n    parsed_args = create_parser().parse_args(args=args)\n    # Propagate parsed layout parameters to LAParams object\n    if parsed_args.no_laparams:\n        parsed_args.laparams = None\n    else:\n        parsed_args.laparams = LAParams(\n            line_overlap=parsed_args.line_overlap,\n            char_margin=parsed_args.char_margin,\n            line_margin=parsed_args.line_margin,",
+        "detail": ".venv.Scripts.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".venv.Scripts.pdf2txt",
+        "description": ".venv.Scripts.pdf2txt",
+        "peekOfCode": "def main(args: Optional[List[str]] = None) -> int:\n    parsed_args = parse_args(args)\n    outfp = extract_text(**vars(parsed_args))\n    outfp.close()\n    return 0\nif __name__ == \"__main__\":\n    sys.exit(main())",
+        "detail": ".venv.Scripts.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "OUTPUT_TYPES",
+        "kind": 5,
+        "importPath": ".venv.Scripts.pdf2txt",
+        "description": ".venv.Scripts.pdf2txt",
+        "peekOfCode": "OUTPUT_TYPES = ((\".htm\", \"html\"), (\".html\", \"html\"), (\".xml\", \"xml\"), (\".tag\", \"tag\"))\ndef float_or_disabled(x: str) -> Optional[float]:\n    if x.lower().strip() == \"disabled\":\n        return None\n    try:\n        return float(x)\n    except ValueError:\n        raise argparse.ArgumentTypeError(f\"invalid float value: {x}\")\ndef extract_text(\n    files: Iterable[str] = [],",
+        "detail": ".venv.Scripts.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "chat",
+        "kind": 2,
+        "importPath": "backend.app.api.routes.chat",
+        "description": "backend.app.api.routes.chat",
+        "peekOfCode": "def chat(request: ChatRequest):\n    \"\"\"Handle chat requests with RAG.\"\"\"\n    try:\n        logger.info(\"Processing chat request\", message_length=len(request.message), \n                   conversation_id=request.conversation_id)\n        # If conversation_id is provided, save the user message\n        if request.conversation_id:\n            try:\n                conversation_service.add_message(\n                    conversation_id=request.conversation_id,",
+        "detail": "backend.app.api.routes.chat",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.app.api.routes.chat",
+        "description": "backend.app.api.routes.chat",
+        "peekOfCode": "logger = structlog.get_logger()\nrouter = APIRouter()\n@router.post(\"/chat\", response_model=ChatResponse)\ndef chat(request: ChatRequest):\n    \"\"\"Handle chat requests with RAG.\"\"\"\n    try:\n        logger.info(\"Processing chat request\", message_length=len(request.message), \n                   conversation_id=request.conversation_id)\n        # If conversation_id is provided, save the user message\n        if request.conversation_id:",
+        "detail": "backend.app.api.routes.chat",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "backend.app.api.routes.chat",
+        "description": "backend.app.api.routes.chat",
+        "peekOfCode": "router = APIRouter()\n@router.post(\"/chat\", response_model=ChatResponse)\ndef chat(request: ChatRequest):\n    \"\"\"Handle chat requests with RAG.\"\"\"\n    try:\n        logger.info(\"Processing chat request\", message_length=len(request.message), \n                   conversation_id=request.conversation_id)\n        # If conversation_id is provided, save the user message\n        if request.conversation_id:\n            try:",
+        "detail": "backend.app.api.routes.chat",
+        "documentation": {}
+    },
+    {
+        "label": "CreateConversationRequest",
+        "kind": 6,
+        "importPath": "backend.app.api.routes.conversations",
+        "description": "backend.app.api.routes.conversations",
+        "peekOfCode": "class CreateConversationRequest(BaseModel):\n    \"\"\"Request model for creating a conversation.\"\"\"\n    title: str = Field(..., min_length=1, max_length=200, description=\"Conversation title\")\n    metadata: Optional[dict] = Field(default=None, description=\"Optional metadata\")\nclass CreateConversationResponse(BaseModel):\n    \"\"\"Response model for creating a conversation.\"\"\"\n    conversation_id: int\n    title: str\n    created_at: str\nclass ConversationSummary(BaseModel):",
+        "detail": "backend.app.api.routes.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "CreateConversationResponse",
+        "kind": 6,
+        "importPath": "backend.app.api.routes.conversations",
+        "description": "backend.app.api.routes.conversations",
+        "peekOfCode": "class CreateConversationResponse(BaseModel):\n    \"\"\"Response model for creating a conversation.\"\"\"\n    conversation_id: int\n    title: str\n    created_at: str\nclass ConversationSummary(BaseModel):\n    \"\"\"Summary of a conversation.\"\"\"\n    id: int\n    title: str\n    created_at: str",
+        "detail": "backend.app.api.routes.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationSummary",
+        "kind": 6,
+        "importPath": "backend.app.api.routes.conversations",
+        "description": "backend.app.api.routes.conversations",
+        "peekOfCode": "class ConversationSummary(BaseModel):\n    \"\"\"Summary of a conversation.\"\"\"\n    id: int\n    title: str\n    created_at: str\n    updated_at: str\n    message_count: int\n    metadata: dict\nclass Message(BaseModel):\n    \"\"\"Message model.\"\"\"",
+        "detail": "backend.app.api.routes.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "Message",
+        "kind": 6,
+        "importPath": "backend.app.api.routes.conversations",
+        "description": "backend.app.api.routes.conversations",
+        "peekOfCode": "class Message(BaseModel):\n    \"\"\"Message model.\"\"\"\n    id: int\n    role: str\n    content: str\n    sources: List[dict]\n    timestamp: str\nclass ConversationDetail(BaseModel):\n    \"\"\"Detailed conversation with messages.\"\"\"\n    id: int",
+        "detail": "backend.app.api.routes.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationDetail",
+        "kind": 6,
+        "importPath": "backend.app.api.routes.conversations",
+        "description": "backend.app.api.routes.conversations",
+        "peekOfCode": "class ConversationDetail(BaseModel):\n    \"\"\"Detailed conversation with messages.\"\"\"\n    id: int\n    title: str\n    created_at: str\n    updated_at: str\n    message_count: int\n    metadata: dict\n    messages: List[Message]\nclass UpdateTitleRequest(BaseModel):",
+        "detail": "backend.app.api.routes.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "UpdateTitleRequest",
+        "kind": 6,
+        "importPath": "backend.app.api.routes.conversations",
+        "description": "backend.app.api.routes.conversations",
+        "peekOfCode": "class UpdateTitleRequest(BaseModel):\n    \"\"\"Request to update conversation title.\"\"\"\n    title: str = Field(..., min_length=1, max_length=200)\n@router.post(\"/conversations\", response_model=CreateConversationResponse)\nasync def create_conversation(request: CreateConversationRequest):\n    \"\"\"Create a new conversation.\"\"\"\n    try:\n        conversation_id = conversation_service.create_conversation(\n            title=request.title,\n            metadata=request.metadata",
+        "detail": "backend.app.api.routes.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.app.api.routes.conversations",
+        "description": "backend.app.api.routes.conversations",
+        "peekOfCode": "logger = structlog.get_logger()\nrouter = APIRouter()\nclass CreateConversationRequest(BaseModel):\n    \"\"\"Request model for creating a conversation.\"\"\"\n    title: str = Field(..., min_length=1, max_length=200, description=\"Conversation title\")\n    metadata: Optional[dict] = Field(default=None, description=\"Optional metadata\")\nclass CreateConversationResponse(BaseModel):\n    \"\"\"Response model for creating a conversation.\"\"\"\n    conversation_id: int\n    title: str",
+        "detail": "backend.app.api.routes.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "backend.app.api.routes.conversations",
+        "description": "backend.app.api.routes.conversations",
+        "peekOfCode": "router = APIRouter()\nclass CreateConversationRequest(BaseModel):\n    \"\"\"Request model for creating a conversation.\"\"\"\n    title: str = Field(..., min_length=1, max_length=200, description=\"Conversation title\")\n    metadata: Optional[dict] = Field(default=None, description=\"Optional metadata\")\nclass CreateConversationResponse(BaseModel):\n    \"\"\"Response model for creating a conversation.\"\"\"\n    conversation_id: int\n    title: str\n    created_at: str",
+        "detail": "backend.app.api.routes.conversations",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "backend.app.api.routes.health",
+        "description": "backend.app.api.routes.health",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/health\", response_model=HealthResponse)\nasync def health_check(deep: bool = Query(False, description=\"Perform deep health check including external services\")):\n    \"\"\"Health check endpoint with optional deep checks for external services.\"\"\"\n    if not deep:\n        return HealthResponse(status=\"healthy\", version=settings.api_version)\n    # Deep check - verify external services\n    services_status = {\n        \"llm_service\": llm_service.is_available(),\n        \"vector_store\": vector_store.is_available()",
+        "detail": "backend.app.api.routes.health",
+        "documentation": {}
+    },
+    {
+        "label": "MemorySettingsUpdate",
+        "kind": 6,
+        "importPath": "backend.app.api.routes.memory",
+        "description": "backend.app.api.routes.memory",
+        "peekOfCode": "class MemorySettingsUpdate(BaseModel):\n    \"\"\"Request model for updating memory settings.\"\"\"\n    enabled: bool = Field(..., description=\"Enable or disable conversation memory\")\n    window_size: int = Field(..., ge=2, le=20, description=\"Number of Q&A pairs to retain (2, 5, 10, or 20)\")\nclass MemorySettingsResponse(BaseModel):\n    \"\"\"Response model for memory settings.\"\"\"\n    enabled: bool\n    window_size: int\n    current_messages: int\n    conversation_pairs: int",
+        "detail": "backend.app.api.routes.memory",
+        "documentation": {}
+    },
+    {
+        "label": "MemorySettingsResponse",
+        "kind": 6,
+        "importPath": "backend.app.api.routes.memory",
+        "description": "backend.app.api.routes.memory",
+        "peekOfCode": "class MemorySettingsResponse(BaseModel):\n    \"\"\"Response model for memory settings.\"\"\"\n    enabled: bool\n    window_size: int\n    current_messages: int\n    conversation_pairs: int\n    at_capacity: bool\n@router.get(\"/memory/settings\", response_model=MemorySettingsResponse)\nasync def get_memory_settings():\n    \"\"\"Get current memory configuration and statistics.\"\"\"",
+        "detail": "backend.app.api.routes.memory",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "backend.app.api.routes.memory",
+        "description": "backend.app.api.routes.memory",
+        "peekOfCode": "router = APIRouter()\nclass MemorySettingsUpdate(BaseModel):\n    \"\"\"Request model for updating memory settings.\"\"\"\n    enabled: bool = Field(..., description=\"Enable or disable conversation memory\")\n    window_size: int = Field(..., ge=2, le=20, description=\"Number of Q&A pairs to retain (2, 5, 10, or 20)\")\nclass MemorySettingsResponse(BaseModel):\n    \"\"\"Response model for memory settings.\"\"\"\n    enabled: bool\n    window_size: int\n    current_messages: int",
+        "detail": "backend.app.api.routes.memory",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.app.api.routes.upload",
+        "description": "backend.app.api.routes.upload",
+        "peekOfCode": "logger = structlog.get_logger()\nrouter = APIRouter()\n# Configuration\nUPLOAD_DIR = Path(\"uploads\")\nUPLOAD_DIR.mkdir(exist_ok=True)\nMAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB\nALLOWED_EXTENSIONS = {\".pdf\", \".txt\", \".doc\", \".docx\", \".md\"}\n@router.post(\"/upload\")\nasync def upload_file(file: UploadFile = File(...)):\n    \"\"\"",
+        "detail": "backend.app.api.routes.upload",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "backend.app.api.routes.upload",
+        "description": "backend.app.api.routes.upload",
+        "peekOfCode": "router = APIRouter()\n# Configuration\nUPLOAD_DIR = Path(\"uploads\")\nUPLOAD_DIR.mkdir(exist_ok=True)\nMAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB\nALLOWED_EXTENSIONS = {\".pdf\", \".txt\", \".doc\", \".docx\", \".md\"}\n@router.post(\"/upload\")\nasync def upload_file(file: UploadFile = File(...)):\n    \"\"\"\n    Upload a file for processing.",
+        "detail": "backend.app.api.routes.upload",
+        "documentation": {}
+    },
+    {
+        "label": "UPLOAD_DIR",
+        "kind": 5,
+        "importPath": "backend.app.api.routes.upload",
+        "description": "backend.app.api.routes.upload",
+        "peekOfCode": "UPLOAD_DIR = Path(\"uploads\")\nUPLOAD_DIR.mkdir(exist_ok=True)\nMAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB\nALLOWED_EXTENSIONS = {\".pdf\", \".txt\", \".doc\", \".docx\", \".md\"}\n@router.post(\"/upload\")\nasync def upload_file(file: UploadFile = File(...)):\n    \"\"\"\n    Upload a file for processing.\n    Supports: PDF, TXT, DOC, DOCX, MD files up to 10MB\n    \"\"\"",
+        "detail": "backend.app.api.routes.upload",
+        "documentation": {}
+    },
+    {
+        "label": "MAX_FILE_SIZE",
+        "kind": 5,
+        "importPath": "backend.app.api.routes.upload",
+        "description": "backend.app.api.routes.upload",
+        "peekOfCode": "MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB\nALLOWED_EXTENSIONS = {\".pdf\", \".txt\", \".doc\", \".docx\", \".md\"}\n@router.post(\"/upload\")\nasync def upload_file(file: UploadFile = File(...)):\n    \"\"\"\n    Upload a file for processing.\n    Supports: PDF, TXT, DOC, DOCX, MD files up to 10MB\n    \"\"\"\n    try:\n        # Validate file extension",
+        "detail": "backend.app.api.routes.upload",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_EXTENSIONS",
+        "kind": 5,
+        "importPath": "backend.app.api.routes.upload",
+        "description": "backend.app.api.routes.upload",
+        "peekOfCode": "ALLOWED_EXTENSIONS = {\".pdf\", \".txt\", \".doc\", \".docx\", \".md\"}\n@router.post(\"/upload\")\nasync def upload_file(file: UploadFile = File(...)):\n    \"\"\"\n    Upload a file for processing.\n    Supports: PDF, TXT, DOC, DOCX, MD files up to 10MB\n    \"\"\"\n    try:\n        # Validate file extension\n        file_ext = Path(file.filename).suffix.lower()",
+        "detail": "backend.app.api.routes.upload",
+        "documentation": {}
+    },
+    {
+        "label": "Settings",
+        "kind": 6,
+        "importPath": "backend.app.core.config",
+        "description": "backend.app.core.config",
+        "peekOfCode": "class Settings(BaseSettings):\n    \"\"\"Application settings loaded from environment variables.\"\"\"\n    # Groq Settings\n    groq_api_key: str = \"\"\n    groq_model: str = \"llama-3.3-70b-versatile\"\n    groq_temperature: float = 0.3\n    # OpenAI Settings (for embeddings)\n    openai_api_key: str = \"\"\n    # Pinecone Settings\n    pinecone_api_key: str = \"\"",
+        "detail": "backend.app.core.config",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "kind": 5,
+        "importPath": "backend.app.core.config",
+        "description": "backend.app.core.config",
+        "peekOfCode": "settings = Settings()",
+        "detail": "backend.app.core.config",
+        "documentation": {}
+    },
+    {
+        "label": "RobustJSONParser",
+        "kind": 6,
+        "importPath": "backend.app.core.json_parser",
+        "description": "backend.app.core.json_parser",
+        "peekOfCode": "class RobustJSONParser:\n    \"\"\"Parser that can extract partial structured data from malformed LLM outputs.\"\"\"\n    @staticmethod\n    def extract_json_from_text(text: str) -> Optional[Dict[str, Any]]:\n        \"\"\"\n        Extract JSON from text that may contain markdown code blocks or extra text.\n        Handles cases like:\n        - ```json\\n{...}\\n```\n        - Here is the answer:\\n{...}\n        - {...} with trailing text",
+        "detail": "backend.app.core.json_parser",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.app.core.json_parser",
+        "description": "backend.app.core.json_parser",
+        "peekOfCode": "logger = structlog.get_logger()\nclass RobustJSONParser:\n    \"\"\"Parser that can extract partial structured data from malformed LLM outputs.\"\"\"\n    @staticmethod\n    def extract_json_from_text(text: str) -> Optional[Dict[str, Any]]:\n        \"\"\"\n        Extract JSON from text that may contain markdown code blocks or extra text.\n        Handles cases like:\n        - ```json\\n{...}\\n```\n        - Here is the answer:\\n{...}",
+        "detail": "backend.app.core.json_parser",
+        "documentation": {}
+    },
+    {
+        "label": "robust_parser",
+        "kind": 5,
+        "importPath": "backend.app.core.json_parser",
+        "description": "backend.app.core.json_parser",
+        "peekOfCode": "robust_parser = RobustJSONParser()",
+        "detail": "backend.app.core.json_parser",
+        "documentation": {}
+    },
+    {
+        "label": "bold_keywords",
+        "kind": 2,
+        "importPath": "backend.app.core.markdown_renderer",
+        "description": "backend.app.core.markdown_renderer",
+        "peekOfCode": "def bold_keywords(text: str, extra_terms: Optional[Set[str]] = None) -> str:\n    \"\"\"Bold domain-specific keywords in text.\"\"\"\n    terms = set(BASE_TERMS)\n    if extra_terms:\n        terms |= {t.lower() for t in extra_terms}\n    # Sort longest first to prevent partial bolding inside multi-word terms\n    for term in sorted(terms, key=len, reverse=True):\n        # Use word boundaries to avoid partial matches\n        pattern = r\"\\b\" + re.escape(term) + r\"\\b\"\n        # Check if already bolded to avoid double-bolding",
+        "detail": "backend.app.core.markdown_renderer",
+        "documentation": {}
+    },
+    {
+        "label": "render_markdown",
+        "kind": 2,
+        "importPath": "backend.app.core.markdown_renderer",
+        "description": "backend.app.core.markdown_renderer",
+        "peekOfCode": "def render_markdown(resp: QAResponse, extra_terms: Optional[Set[str]] = None) -> str:\n    \"\"\"Render response as natural, conversational markdown with optional structure.\"\"\"\n    def B(s: str) -> str:\n        \"\"\"Bold keywords in text.\"\"\"\n        return bold_keywords(s, extra_terms=extra_terms)\n    sections = []\n    # Start with the main answer (always present)\n    if resp.answer:\n        sections.append(B(resp.answer))\n        sections.append(\"\")",
+        "detail": "backend.app.core.markdown_renderer",
+        "documentation": {}
+    },
+    {
+        "label": "render_simple_markdown",
+        "kind": 2,
+        "importPath": "backend.app.core.markdown_renderer",
+        "description": "backend.app.core.markdown_renderer",
+        "peekOfCode": "def render_simple_markdown(text: str, sources: List[str], extra_terms: Optional[Set[str]] = None) -> str:\n    \"\"\"Render simple markdown for fallback responses with inline citations.\"\"\"\n    def B(s: str) -> str:\n        return bold_keywords(s, extra_terms=extra_terms)\n    # Bold the main text\n    bolded_text = B(text)\n    # Extract page numbers from the text and add inline citations\n    import re\n    # Find all existing [Page X] citations in the text\n    existing_citations = re.findall(r'\\[Page\\s+([\\d.]+)\\]', bolded_text)",
+        "detail": "backend.app.core.markdown_renderer",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_TERMS",
+        "kind": 5,
+        "importPath": "backend.app.core.markdown_renderer",
+        "description": "backend.app.core.markdown_renderer",
+        "peekOfCode": "BASE_TERMS = {\n    \"shariah\", \"shari'ah\", \"sharia\", \"fiqh\", \"fatwa\", \"aaoifi\",\n    \"riba\", \"gharar\", \"maysir\",\n    \"murabaha\", \"mudarabah\", \"musharakah\", \"ijarah\", \"tawarruq\",\n    \"wakalah\", \"sukuk\", \"guarantee\", \"pledge\", \"contract\", \"resolution\",\n    \"supervisory board\", \"shariah board\", \"sharia board\", \"enforceable\", \"prohibition\",\n    \"monitoring\", \"reporting\", \"governance\", \"compliance\", \"islamic\",\n    \"halal\", \"haram\", \"makruh\", \"mandub\", \"mubah\",\n    \"qard\", \"salam\", \"istisna\", \"kafalah\", \"hawalah\",\n    \"profit\", \"loss\", \"partnership\", \"transaction\", \"investment\",",
+        "detail": "backend.app.core.markdown_renderer",
+        "documentation": {}
+    },
+    {
+        "label": "RAGEnginePro",
+        "kind": 6,
+        "importPath": "backend.app.core.rag_engine_pro",
+        "description": "backend.app.core.rag_engine_pro",
+        "peekOfCode": "class RAGEnginePro:\n    \"\"\"Enhanced RAG engine with structured, consultant-grade responses.\"\"\"\n    def __init__(self, *, max_sources: int = 5):\n        self.max_sources = max_sources\n        self._llm = None\n        self._retriever = None\n        self._initialized = False\n        # Memory control settings\n        self.memory_enabled = True\n        self.memory_window_size = 5  # Number of message pairs to keep",
+        "detail": "backend.app.core.rag_engine_pro",
+        "documentation": {}
+    },
+    {
+        "label": "rag_engine_pro",
+        "kind": 5,
+        "importPath": "backend.app.core.rag_engine_pro",
+        "description": "backend.app.core.rag_engine_pro",
+        "peekOfCode": "rag_engine_pro = RAGEnginePro()",
+        "detail": "backend.app.core.rag_engine_pro",
+        "documentation": {}
+    },
+    {
+        "label": "ResponseTone",
+        "kind": 6,
+        "importPath": "backend.app.schemas.chat",
+        "description": "backend.app.schemas.chat",
+        "peekOfCode": "class ResponseTone(str, Enum):\n    \"\"\"Response tone options for flexible AI responses.\"\"\"\n    CONVERSATIONAL = \"conversational\"  # Like ChatGPT - friendly, natural\n    CONCISE = \"concise\"  # Short, to-the-point answers\n    DETAILED = \"detailed\"  # Comprehensive explanations\n    PROFESSIONAL = \"professional\"  # Formal consultant style\n    SIMPLE = \"simple\"  # Explain like I'm 5\nclass SourceDocument(BaseModel):\n    \"\"\"Source document with detailed metadata.\"\"\"\n    page: int = Field(..., description=\"Page number in the source document\")",
+        "detail": "backend.app.schemas.chat",
+        "documentation": {}
+    },
+    {
+        "label": "SourceDocument",
+        "kind": 6,
+        "importPath": "backend.app.schemas.chat",
+        "description": "backend.app.schemas.chat",
+        "peekOfCode": "class SourceDocument(BaseModel):\n    \"\"\"Source document with detailed metadata.\"\"\"\n    page: int = Field(..., description=\"Page number in the source document\")\n    content: str = Field(..., description=\"Excerpt from the source\")\n    score: float = Field(default=0.0, ge=0.0, le=1.0, description=\"Relevance score (0-1)\")\n    chunk_id: Optional[str] = Field(default=None, description=\"Unique chunk identifier\")\n    source_file: Optional[str] = Field(default=None, description=\"Source document filename\")\n    start_char: Optional[int] = Field(default=None, description=\"Character start position in page\")\n    end_char: Optional[int] = Field(default=None, description=\"Character end position in page\")\n    context_before: Optional[str] = Field(default=None, description=\"Text before the excerpt\")",
+        "detail": "backend.app.schemas.chat",
+        "documentation": {}
+    },
+    {
+        "label": "ChatRequest",
+        "kind": 6,
+        "importPath": "backend.app.schemas.chat",
+        "description": "backend.app.schemas.chat",
+        "peekOfCode": "class ChatRequest(BaseModel):\n    \"\"\"Chat request model.\"\"\"\n    message: str = Field(..., min_length=1, max_length=2000, description=\"User's question\")\n    conversation_history: Optional[List[dict]] = Field(default=[], description=\"Previous messages\")\n    conversation_id: Optional[int] = Field(default=None, description=\"Optional conversation ID to save messages\")\n    tone: Optional[ResponseTone] = Field(default=ResponseTone.CONVERSATIONAL, description=\"Response tone/style\")\nclass ChatResponse(BaseModel):\n    \"\"\"Chat response model with sources.\"\"\"\n    answer: str = Field(..., description=\"AI-generated answer\")\n    sources: List[SourceDocument] = Field(default_factory=list, description=\"Source documents with page references\")",
+        "detail": "backend.app.schemas.chat",
+        "documentation": {}
+    },
+    {
+        "label": "ChatResponse",
+        "kind": 6,
+        "importPath": "backend.app.schemas.chat",
+        "description": "backend.app.schemas.chat",
+        "peekOfCode": "class ChatResponse(BaseModel):\n    \"\"\"Chat response model with sources.\"\"\"\n    answer: str = Field(..., description=\"AI-generated answer\")\n    sources: List[SourceDocument] = Field(default_factory=list, description=\"Source documents with page references\")\n    follow_up_questions: Optional[List[str]] = Field(default=None, description=\"Suggested follow-up questions\")\n    metadata: Optional[dict] = Field(default_factory=dict, description=\"Additional metadata\")\nclass HealthResponse(BaseModel):\n    \"\"\"Health check response.\"\"\"\n    status: str = \"healthy\"\n    version: str = \"1.0.0\"",
+        "detail": "backend.app.schemas.chat",
+        "documentation": {}
+    },
+    {
+        "label": "HealthResponse",
+        "kind": 6,
+        "importPath": "backend.app.schemas.chat",
+        "description": "backend.app.schemas.chat",
+        "peekOfCode": "class HealthResponse(BaseModel):\n    \"\"\"Health check response.\"\"\"\n    status: str = \"healthy\"\n    version: str = \"1.0.0\"",
+        "detail": "backend.app.schemas.chat",
+        "documentation": {}
+    },
+    {
+        "label": "QAResponse",
+        "kind": 6,
+        "importPath": "backend.app.schemas.qa_response",
+        "description": "backend.app.schemas.qa_response",
+        "peekOfCode": "class QAResponse(BaseModel):\n    \"\"\"Flexible response schema that adapts to question type.\"\"\"\n    executive_summary: List[str] = Field(\n        default_factory=list,\n        description=\"Optional: 2-5 key points for complex topics. Leave empty for simple questions.\"\n    )\n    requirements_by_page: Dict[str, List[str]] = Field(\n        default_factory=dict,\n        description=\"Optional: Requirements grouped by page when relevant. Can be empty for non-requirement questions.\"\n    )",
+        "detail": "backend.app.schemas.qa_response",
+        "documentation": {}
+    },
+    {
+        "label": "MultiQueryResponse",
+        "kind": 6,
+        "importPath": "backend.app.schemas.qa_response",
+        "description": "backend.app.schemas.qa_response",
+        "peekOfCode": "class MultiQueryResponse(BaseModel):\n    \"\"\"Response for multi-query expansion.\"\"\"\n    queries: List[str] = Field(..., min_length=3, max_length=5)",
+        "detail": "backend.app.schemas.qa_response",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationService",
+        "kind": 6,
+        "importPath": "backend.app.services.conversation_service",
+        "description": "backend.app.services.conversation_service",
+        "peekOfCode": "class ConversationService:\n    \"\"\"Service for managing conversation persistence.\"\"\"\n    def __init__(self, db_path: str = \"conversations.db\"):\n        \"\"\"Initialize the conversation service with SQLite database.\"\"\"\n        self.db_path = Path(db_path)\n        self._ensure_initialized = False\n        self._init_database()\n    def _init_database(self):\n        \"\"\"Initialize the database schema.\"\"\"\n        if self._ensure_initialized:",
+        "detail": "backend.app.services.conversation_service",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.app.services.conversation_service",
+        "description": "backend.app.services.conversation_service",
+        "peekOfCode": "logger = structlog.get_logger()\nclass ConversationService:\n    \"\"\"Service for managing conversation persistence.\"\"\"\n    def __init__(self, db_path: str = \"conversations.db\"):\n        \"\"\"Initialize the conversation service with SQLite database.\"\"\"\n        self.db_path = Path(db_path)\n        self._ensure_initialized = False\n        self._init_database()\n    def _init_database(self):\n        \"\"\"Initialize the database schema.\"\"\"",
+        "detail": "backend.app.services.conversation_service",
+        "documentation": {}
+    },
+    {
+        "label": "conversation_service",
+        "kind": 5,
+        "importPath": "backend.app.services.conversation_service",
+        "description": "backend.app.services.conversation_service",
+        "peekOfCode": "conversation_service = ConversationService()",
+        "detail": "backend.app.services.conversation_service",
+        "documentation": {}
+    },
+    {
+        "label": "DocumentProcessor",
+        "kind": 6,
+        "importPath": "backend.app.services.document_processor",
+        "description": "backend.app.services.document_processor",
+        "peekOfCode": "class DocumentProcessor:\n    \"\"\"Service for processing PDF documents.\"\"\"\n    def __init__(self):\n        self.text_splitter = RecursiveCharacterTextSplitter(\n            chunk_size=settings.chunk_size,\n            chunk_overlap=settings.chunk_overlap,\n            separators=[\"\\n\\n\", \"\\n\", \". \"]\n        )\n    def process_pdf(self, file_path: str) -> List[Document]:\n        \"\"\"Load and chunk PDF file.\"\"\"",
+        "detail": "backend.app.services.document_processor",
+        "documentation": {}
+    },
+    {
+        "label": "process_and_upload_document",
+        "kind": 2,
+        "importPath": "backend.app.services.document_processor",
+        "description": "backend.app.services.document_processor",
+        "peekOfCode": "def process_and_upload_document(file_path: str) -> Dict[str, Any]:\n    \"\"\"\n    Process a document and upload it to the vector store.\n    Args:\n        file_path: Path to the document file\n    Returns:\n        Dictionary with processing results\n    Raises:\n        ValueError: If file type is not supported\n        Exception: If processing or upload fails",
+        "detail": "backend.app.services.document_processor",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.app.services.document_processor",
+        "description": "backend.app.services.document_processor",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass DocumentProcessor:\n    \"\"\"Service for processing PDF documents.\"\"\"\n    def __init__(self):\n        self.text_splitter = RecursiveCharacterTextSplitter(\n            chunk_size=settings.chunk_size,\n            chunk_overlap=settings.chunk_overlap,\n            separators=[\"\\n\\n\", \"\\n\", \". \"]\n        )\n    def process_pdf(self, file_path: str) -> List[Document]:",
+        "detail": "backend.app.services.document_processor",
+        "documentation": {}
+    },
+    {
+        "label": "document_processor",
+        "kind": 5,
+        "importPath": "backend.app.services.document_processor",
+        "description": "backend.app.services.document_processor",
+        "peekOfCode": "document_processor = DocumentProcessor()\ndef process_and_upload_document(file_path: str) -> Dict[str, Any]:\n    \"\"\"\n    Process a document and upload it to the vector store.\n    Args:\n        file_path: Path to the document file\n    Returns:\n        Dictionary with processing results\n    Raises:\n        ValueError: If file type is not supported",
+        "detail": "backend.app.services.document_processor",
+        "documentation": {}
+    },
+    {
+        "label": "LLMService",
+        "kind": 6,
+        "importPath": "backend.app.services.llm_service",
+        "description": "backend.app.services.llm_service",
+        "peekOfCode": "class LLMService:\n    \"\"\"Service for LLM interactions using Groq with lazy initialization.\"\"\"\n    def __init__(self):\n        \"\"\"Initialize service without creating LLM client yet.\"\"\"\n        self._llm: Optional[ChatGroq] = None\n        self._initialized = False\n        self._initialization_error: Optional[str] = None\n        self.system_prompt = \"\"\"You are a senior consultant specializing in AAOIFI Sharia Standards. Provide specific, detailed, and professionally structured responses. Extract and cite actual principles, requirements, and guidelines from the standards. Use precise terminology and cite page numbers as [Page X] for each distinct point.\"\"\"\n    def _initialize_llm(self):\n        \"\"\"Lazily initialize the Groq chat model on first access.\"\"\"",
+        "detail": "backend.app.services.llm_service",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.app.services.llm_service",
+        "description": "backend.app.services.llm_service",
+        "peekOfCode": "logger = structlog.get_logger()\nclass LLMService:\n    \"\"\"Service for LLM interactions using Groq with lazy initialization.\"\"\"\n    def __init__(self):\n        \"\"\"Initialize service without creating LLM client yet.\"\"\"\n        self._llm: Optional[ChatGroq] = None\n        self._initialized = False\n        self._initialization_error: Optional[str] = None\n        self.system_prompt = \"\"\"You are a senior consultant specializing in AAOIFI Sharia Standards. Provide specific, detailed, and professionally structured responses. Extract and cite actual principles, requirements, and guidelines from the standards. Use precise terminology and cite page numbers as [Page X] for each distinct point.\"\"\"\n    def _initialize_llm(self):",
+        "detail": "backend.app.services.llm_service",
+        "documentation": {}
+    },
+    {
+        "label": "llm_service",
+        "kind": 5,
+        "importPath": "backend.app.services.llm_service",
+        "description": "backend.app.services.llm_service",
+        "peekOfCode": "llm_service = LLMService()",
+        "detail": "backend.app.services.llm_service",
+        "documentation": {}
+    },
+    {
+        "label": "VectorStoreService",
+        "kind": 6,
+        "importPath": "backend.app.services.vector_store",
+        "description": "backend.app.services.vector_store",
+        "peekOfCode": "class VectorStoreService:\n    \"\"\"Service for managing vector store operations with lazy initialization.\"\"\"\n    def __init__(self):\n        self._embeddings: Optional[HuggingFaceEmbeddings] = None\n        self._pinecone_client: Optional[Pinecone] = None\n        self._index = None\n        self._vectorstore: Optional[PineconeVectorStore] = None\n        self._initialized = False\n    def _ensure_initialized(self):\n        \"\"\"Lazy initialization of Pinecone client and vector store.\"\"\"",
+        "detail": "backend.app.services.vector_store",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.app.services.vector_store",
+        "description": "backend.app.services.vector_store",
+        "peekOfCode": "logger = structlog.get_logger()\nclass VectorStoreService:\n    \"\"\"Service for managing vector store operations with lazy initialization.\"\"\"\n    def __init__(self):\n        self._embeddings: Optional[HuggingFaceEmbeddings] = None\n        self._pinecone_client: Optional[Pinecone] = None\n        self._index = None\n        self._vectorstore: Optional[PineconeVectorStore] = None\n        self._initialized = False\n    def _ensure_initialized(self):",
+        "detail": "backend.app.services.vector_store",
+        "documentation": {}
+    },
+    {
+        "label": "vector_store",
+        "kind": 5,
+        "importPath": "backend.app.services.vector_store",
+        "description": "backend.app.services.vector_store",
+        "peekOfCode": "vector_store = VectorStoreService()",
+        "detail": "backend.app.services.vector_store",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.app.main",
+        "description": "backend.app.main",
+        "peekOfCode": "logger = structlog.get_logger()\nlimiter = Limiter(key_func=get_remote_address)\napp = FastAPI(\n    title=settings.api_title,\n    version=settings.api_version,\n    description=\"RAG chatbot for AAOIFI Sharia Standards\"\n)\napp.state.limiter = limiter\napp.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)\napp.add_middleware(",
+        "detail": "backend.app.main",
+        "documentation": {}
+    },
+    {
+        "label": "limiter",
+        "kind": 5,
+        "importPath": "backend.app.main",
+        "description": "backend.app.main",
+        "peekOfCode": "limiter = Limiter(key_func=get_remote_address)\napp = FastAPI(\n    title=settings.api_title,\n    version=settings.api_version,\n    description=\"RAG chatbot for AAOIFI Sharia Standards\"\n)\napp.state.limiter = limiter\napp.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)\napp.add_middleware(\n    CORSMiddleware,",
+        "detail": "backend.app.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "backend.app.main",
+        "description": "backend.app.main",
+        "peekOfCode": "app = FastAPI(\n    title=settings.api_title,\n    version=settings.api_version,\n    description=\"RAG chatbot for AAOIFI Sharia Standards\"\n)\napp.state.limiter = limiter\napp.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],",
+        "detail": "backend.app.main",
+        "documentation": {}
+    },
+    {
+        "label": "app.state.limiter",
+        "kind": 5,
+        "importPath": "backend.app.main",
+        "description": "backend.app.main",
+        "peekOfCode": "app.state.limiter = limiter\napp.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\napp.include_router(chat.router, prefix=\"/api/v1\", tags=[\"chat\"])",
+        "detail": "backend.app.main",
+        "documentation": {}
+    },
+    {
+        "label": "reset_pinecone_index",
+        "kind": 2,
+        "importPath": "backend.reset_and_upload",
+        "description": "backend.reset_and_upload",
+        "peekOfCode": "def reset_pinecone_index():\n    \"\"\"Delete and recreate Pinecone index with new dimensions.\"\"\"\n    print(\"=\" * 80)\n    print(\"RESETTING PINECONE INDEX FOR HUGGINGFACE EMBEDDINGS\")\n    print(\"=\" * 80)\n    try:\n        # Initialize Pinecone client\n        pc = Pinecone(api_key=settings.pinecone_api_key)\n        index_name = settings.pinecone_index_name\n        # Delete existing index if it exists",
+        "detail": "backend.reset_and_upload",
+        "documentation": {}
+    },
+    {
+        "label": "upload_pdf",
+        "kind": 2,
+        "importPath": "backend.reset_and_upload",
+        "description": "backend.reset_and_upload",
+        "peekOfCode": "def upload_pdf():\n    \"\"\"Upload PDF to Pinecone with new embeddings.\"\"\"\n    pdf_path = Path(__file__).parent.parent / \"AAOIFI - Shariaa Standards-ENG.pdf\"\n    print(f\"\\n📄 Looking for PDF at: {pdf_path}\")\n    if not pdf_path.exists():\n        print(f\"❌ Error: PDF not found at {pdf_path}\")\n        return False\n    try:\n        print(\"\\n📝 Processing PDF...\")\n        chunks = document_processor.process_pdf(str(pdf_path))",
+        "detail": "backend.reset_and_upload",
+        "documentation": {}
+    },
+    {
+        "label": "upload_pdf",
+        "kind": 2,
+        "importPath": "backend.upload_pdf",
+        "description": "backend.upload_pdf",
+        "peekOfCode": "def upload_pdf(pdf_path: str):\n    \"\"\"Process and upload PDF to Pinecone.\"\"\"\n    try:\n        print(f\"Processing PDF: {pdf_path}\")\n        chunks = document_processor.process_pdf(pdf_path)\n        print(f\"Created {len(chunks)} chunks\")\n        print(\"Uploading to Pinecone...\")\n        ids = vector_store.add_documents(chunks)\n        print(f\"Uploaded {len(ids)} documents successfully!\")\n        return True",
+        "detail": "backend.upload_pdf",
+        "documentation": {}
+    }
+]

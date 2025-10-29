@@ -1,0 +1,213 @@
+"""RAG engine for conversational QA with citations."""
+from typing import Tuple, List, Optional, Set, Dict
+import re
+from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationBufferMemory
+from langchain.prompts import PromptTemplate
+from langchain.schema import Document
+from app.core.config import settings
+from app.services.llm_service import llm_service
+from app.services.vector_store import vector_store
+import logging
+
+
+class RAGEngine:
+    """Main RAG engine for Q&A."""
+
+    def __init__(self, *, max_sources: int = 5):
+        self.max_sources = max_sources
+        self.llm = llm_service.get_llm()
+        self.retriever = vector_store.as_retriever(
+            search_kwargs={"k": int(getattr(settings, "top_k_retrieval", 6))}
+        )
+
+        # Custom prompt template - conversational and natural
+        self.qa_prompt = PromptTemplate(
+            input_variables=["context", "question", "chat_history"],
+            template=(
+                "You are an expert consultant on AAOIFI Sharia Standards. Provide professional,"
+                " detailed, and actionable answers.\n\n"
+                "RESPONSE STYLE:\n"
+                "- Be specific and authoritative (like a senior consultant, not generic support)\n"
+                "- Structure your answer clearly with distinct, valuable points\n"
+                "- Use precise terminology from the standards\n"
+                "- Cite specific page numbers for each key point\n"
+                "- Provide depth, not just surface-level information\n\n"
+                "QUALITY REQUIREMENTS:\n"
+                "- Extract and present actual principles, rules, and guidelines from the context\n"
+                "- Identify specific requirements, conditions, or standards mentioned\n"
+                "- Distinguish between different types/categories if applicable\n"
+                "- Give concrete details, not vague generalizations\n"
+                "- Organize information logically (e.g., numbered principles, categories, requirements)\n\n"
+                "CITATION RULES:\n"
+                "- Cite each distinct piece of information with its page number in format [Page X]\n"
+                "- IMPORTANT: Cite each page only ONCE, even if you discuss multiple things from that page\n"
+                "- Group related information from the same page together\n"
+                "- Use different page citations only when referencing different pages\n"
+                "- Do NOT repeat the same [Page X] citation multiple times\n\n"
+                "CRITICAL: Make your answer SUBSTANTIVE.\n\n"
+                "Context from AAOIFI Standards:\n{context}\n\n"
+                "Previous conversation:\n{chat_history}\n\n"
+                "User's question: {question}\n\n"
+                "Provide a detailed, professional answer that extracts the specific principles, requirements, and guidelines from the context:"
+            ),
+        )
+
+        # Initialize memory
+        self.memory = ConversationBufferMemory(
+            memory_key="chat_history",
+            output_key="answer",
+            return_messages=False,
+        )
+
+        # Create the chain
+        self.chain = ConversationalRetrievalChain.from_llm(
+            llm=self.llm,
+            retriever=self.retriever,
+            memory=self.memory,
+            combine_docs_chain_kwargs={"prompt": self.qa_prompt},
+            return_source_documents=True,
+            verbose=False,
+        )
+
+    def _deduplicate_sources(self, docs: List[Document]) -> List[Document]:
+        """Remove duplicate sources using (source,page,chunk_id/content-hash), keep order; cap to max_sources."""
+        seen: Set[str] = set()
+        unique_docs: List[Document] = []
+        for doc in docs:
+            meta = doc.metadata or {}
+            page = str(meta.get("page", "unknown"))
+            source = str(meta.get("source", meta.get("file_path", "unknown")))
+            # Prefer a stable chunk id if available, else hash a robust slice
+            chunk_id = str(meta.get("id") or meta.get("chunk_id") or "")
+            if not chunk_id:
+                content_key = re.sub(r"\s+", " ", doc.page_content.strip())[:256].lower()
+                chunk_id = str(hash((page, content_key)))
+            sig = f"{source}::{page}::{chunk_id}"
+            if sig in seen:
+                continue
+            seen.add(sig)
+            unique_docs.append(doc)
+            if len(unique_docs) >= self.max_sources:
+                break
+        return unique_docs
+
+    def _dedupe_sentences_exact(self, text: str) -> str:
+        """Remove exact-duplicate sentences only; keep order; avoid prefix-based collisions."""
+        # Split on sentence boundaries conservatively.
+        parts = re.split(r"(?<=[.!?])\s+", text.strip())
+        seen: Set[str] = set()
+        out: List[str] = []
+        for p in parts:
+            key = p.strip()
+            if not key:
+                continue
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append(p)
+        return " ".join(out)
+
+    def _collapse_duplicate_page_citations(self, text: str) -> str:
+        """
+        Keep only the first [Page X] occurrence for each X; remove subsequent duplicates.
+        """
+        pattern = re.compile(r"\[Page\s+([\d.]+)\]")
+        seen_pages: Set[str] = set()
+        out: List[str] = []
+        last_end = 0
+        for m in pattern.finditer(text):
+            out.append(text[last_end:m.start()])
+            page = m.group(1)
+            if page not in seen_pages:
+                out.append(m.group(0))  # keep first
+                seen_pages.add(page)
+            # else: drop duplicate citation
+            last_end = m.end()
+        out.append(text[last_end:])
+        return "".join(out)
+
+    def answer_question(self, question: str) -> Tuple[str, List[Document]]:
+        """Answer a question using RAG."""
+        try:
+            result = self.chain.invoke({"question": question})
+            answer = result.get("answer", "I couldn't generate an answer.")
+            sources = result.get("source_documents", [])
+
+            # Deduplicate sources
+            sources = self._deduplicate_sources(sources)
+
+            # Light post-process
+            if answer and len(answer) > 100:
+                answer = self._dedupe_sentences_exact(answer)
+                answer = self._collapse_duplicate_page_citations(answer)
+
+            return answer, sources
+
+        except Exception as e:
+            logging.exception("Error in RAG chain")
+            # Fallback to simple retrieval
+            try:
+                if hasattr(self.retriever, "invoke"):
+                    docs = self.retriever.invoke(question)
+                else:
+                    docs = self.retriever.get_relevant_documents(question)
+            except Exception:
+                docs = []
+
+            docs = self._deduplicate_sources(docs)
+
+            if docs:
+                context_text = "\n\n".join(
+                    f"[Page {d.metadata.get('page','unknown')}]: {d.page_content[:800]}"
+                    for d in docs[: self.max_sources]
+                )
+                from langchain_core.prompts import ChatPromptTemplate
+                from langchain_core.output_parsers import StrOutputParser
+
+                prompt = ChatPromptTemplate.from_messages(
+                    [
+                        (
+                            "system",
+                            "You are a senior consultant on AAOIFI Sharia Standards. "
+                            "Provide specific, detailed, and professionally structured responses. "
+                            "Extract and cite actual principles, requirements, and guidelines from the standards. "
+                            "Use precise terminology and cite page numbers as [Page X] for each distinct point.",
+                        ),
+                        (
+                            "human",
+                            "Based on the following context from AAOIFI Sharia Standards, provide a detailed and professional answer.\n\n"
+                            "Requirements:\n"
+                            "- Extract specific principles, rules, and guidelines\n"
+                            "- Be substantive; avoid vague generalizations\n"
+                            "- Cite each key point with its page number in format [Page X]\n"
+                            "- Organize logically\n\n"
+                            "Context:\n{context}\n\nQuestion: {question}\n\nProvide a detailed, professional answer:",
+                        ),
+                    ]
+                )
+                chain = prompt | self.llm | StrOutputParser()
+                simple_answer = chain.invoke({"context": context_text, "question": question})
+                simple_answer = self._collapse_duplicate_page_citations(
+                    self._dedupe_sentences_exact(simple_answer)
+                )
+                return simple_answer, docs
+
+            return (
+                "I couldn't find specific information about that in the AAOIFI standards. "
+                "Try narrowing the question or specify the standard/section.",
+                [],
+            )
+
+    def clear_memory(self):
+        """Clear conversation history."""
+        try:
+            self.memory.clear()
+        except Exception:
+            self.memory = ConversationBufferMemory(
+                memory_key="chat_history", output_key="answer", return_messages=False
+            )
+
+
+# ⚠️ Consider constructing per-session/user; global singletons will share memory.
+rag_engine = RAGEngine()

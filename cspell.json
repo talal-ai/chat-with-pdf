@@ -1,0 +1,40 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "AAOIFI",
+    "Murabaha",
+    "Shariaa",
+    "Shariah",
+    "Sharia",
+    "Ijarah",
+    "Riba",
+    "Zakat",
+    "Takaful",
+    "Sukuk",
+    "Halal",
+    "Haram",
+    "HUGGINGFACE",
+    "Groq",
+    "Pinecone",
+    "uvicorn",
+    "pydantic",
+    "fastapi",
+    "langchain",
+    "tailwindcss",
+    "zustand",
+    "lucide"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "__pycache__/**",
+    "**/*.pyc",
+    ".venv/**",
+    "venv/**",
+    "dist/**",
+    "build/**",
+    ".next/**",
+    "*.min.js",
+    "*.min.css"
+  ]
+}
