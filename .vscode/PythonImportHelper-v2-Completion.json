@@ -181,22 +181,6 @@
         "documentation": {}
     },
     {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -254,14 +238,6 @@
     },
     {
         "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -405,6 +381,14 @@
         "documentation": {}
     },
     {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -414,6 +398,22 @@
     },
     {
         "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "TYPE_CHECKING",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -711,51 +711,11 @@
         "documentation": {}
     },
     {
-        "label": "Limiter",
-        "importPath": "slowapi",
-        "description": "slowapi",
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "slowapi",
-        "documentation": {}
-    },
-    {
-        "label": "_rate_limit_exceeded_handler",
-        "importPath": "slowapi",
-        "description": "slowapi",
-        "isExtraImport": true,
-        "detail": "slowapi",
-        "documentation": {}
-    },
-    {
-        "label": "Limiter",
-        "importPath": "slowapi",
-        "description": "slowapi",
-        "isExtraImport": true,
-        "detail": "slowapi",
-        "documentation": {}
-    },
-    {
-        "label": "_rate_limit_exceeded_handler",
-        "importPath": "slowapi",
-        "description": "slowapi",
-        "isExtraImport": true,
-        "detail": "slowapi",
-        "documentation": {}
-    },
-    {
-        "label": "get_remote_address",
-        "importPath": "slowapi.util",
-        "description": "slowapi.util",
-        "isExtraImport": true,
-        "detail": "slowapi.util",
-        "documentation": {}
-    },
-    {
-        "label": "get_remote_address",
-        "importPath": "slowapi.util",
-        "description": "slowapi.util",
-        "isExtraImport": true,
-        "detail": "slowapi.util",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
@@ -968,6 +928,14 @@
         "documentation": {}
     },
     {
+        "label": "settings",
+        "importPath": "app.core.config",
+        "description": "app.core.config",
+        "isExtraImport": true,
+        "detail": "app.core.config",
+        "documentation": {}
+    },
+    {
         "label": "llm_service",
         "importPath": "app.services.llm_service",
         "description": "app.services.llm_service",
@@ -1080,21 +1048,11 @@
         "documentation": {}
     },
     {
-        "label": "shutil",
-        "kind": 6,
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
         "isExtraImport": true,
-        "importPath": "shutil",
-        "description": "shutil",
-        "detail": "shutil",
-        "documentation": {}
-    },
-    {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
+        "detail": "pathlib",
         "documentation": {}
     },
     {
@@ -1195,27 +1153,35 @@
         "documentation": {}
     },
     {
-        "label": "ConversationalRetrievalChain",
-        "importPath": "langchain.chains",
-        "description": "langchain.chains",
+        "label": "BaseChatMessageHistory",
+        "importPath": "langchain_core.chat_history",
+        "description": "langchain_core.chat_history",
         "isExtraImport": true,
-        "detail": "langchain.chains",
+        "detail": "langchain_core.chat_history",
         "documentation": {}
     },
     {
-        "label": "ConversationBufferMemory",
-        "importPath": "langchain.memory",
-        "description": "langchain.memory",
+        "label": "InMemoryChatMessageHistory",
+        "importPath": "langchain_core.chat_history",
+        "description": "langchain_core.chat_history",
         "isExtraImport": true,
-        "detail": "langchain.memory",
+        "detail": "langchain_core.chat_history",
         "documentation": {}
     },
     {
-        "label": "ChatPromptTemplate",
-        "importPath": "langchain.prompts",
-        "description": "langchain.prompts",
+        "label": "HumanMessage",
+        "importPath": "langchain_core.messages",
+        "description": "langchain_core.messages",
         "isExtraImport": true,
-        "detail": "langchain.prompts",
+        "detail": "langchain_core.messages",
+        "documentation": {}
+    },
+    {
+        "label": "AIMessage",
+        "importPath": "langchain_core.messages",
+        "description": "langchain_core.messages",
+        "isExtraImport": true,
+        "detail": "langchain_core.messages",
         "documentation": {}
     },
     {
@@ -1248,22 +1214,6 @@
         "description": "langchain_core.output_parsers",
         "isExtraImport": true,
         "detail": "langchain_core.output_parsers",
-        "documentation": {}
-    },
-    {
-        "label": "RunnableParallel",
-        "importPath": "langchain_core.runnables",
-        "description": "langchain_core.runnables",
-        "isExtraImport": true,
-        "detail": "langchain_core.runnables",
-        "documentation": {}
-    },
-    {
-        "label": "RunnablePassthrough",
-        "importPath": "langchain_core.runnables",
-        "description": "langchain_core.runnables",
-        "isExtraImport": true,
-        "detail": "langchain_core.runnables",
         "documentation": {}
     },
     {
@@ -1348,11 +1298,35 @@
         "documentation": {}
     },
     {
+        "label": "ChatOpenAI",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
+        "isExtraImport": true,
+        "detail": "langchain_openai",
+        "documentation": {}
+    },
+    {
+        "label": "annotations",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
         "label": "PineconeVectorStore",
         "importPath": "langchain_pinecone",
         "description": "langchain_pinecone",
         "isExtraImport": true,
         "detail": "langchain_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain_huggingface",
+        "description": "langchain_huggingface",
+        "isExtraImport": true,
+        "detail": "langchain_huggingface",
         "documentation": {}
     },
     {
@@ -1388,11 +1362,43 @@
         "documentation": {}
     },
     {
+        "label": "asynccontextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
         "label": "CORSMiddleware",
         "importPath": "fastapi.middleware.cors",
         "description": "fastapi.middleware.cors",
         "isExtraImport": true,
         "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "Limiter",
+        "importPath": "slowapi",
+        "description": "slowapi",
+        "isExtraImport": true,
+        "detail": "slowapi",
+        "documentation": {}
+    },
+    {
+        "label": "_rate_limit_exceeded_handler",
+        "importPath": "slowapi",
+        "description": "slowapi",
+        "isExtraImport": true,
+        "detail": "slowapi",
+        "documentation": {}
+    },
+    {
+        "label": "get_remote_address",
+        "importPath": "slowapi.util",
+        "description": "slowapi.util",
+        "isExtraImport": true,
+        "detail": "slowapi.util",
         "documentation": {}
     },
     {
@@ -1441,6 +1447,33 @@
         "description": "app.api.routes",
         "isExtraImport": true,
         "detail": "app.api.routes",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "uvicorn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uvicorn",
+        "description": "uvicorn",
+        "detail": "uvicorn",
         "documentation": {}
     },
     {
@@ -1619,7 +1652,7 @@
         "kind": 2,
         "importPath": "backend.app.api.routes.chat",
         "description": "backend.app.api.routes.chat",
-        "peekOfCode": "def chat(request: ChatRequest):\n    \"\"\"Handle chat requests with RAG.\"\"\"\n    try:\n        logger.info(\"Processing chat request\", message_length=len(request.message), \n                   conversation_id=request.conversation_id)\n        # If conversation_id is provided, save the user message\n        if request.conversation_id:\n            try:\n                conversation_service.add_message(\n                    conversation_id=request.conversation_id,",
+        "peekOfCode": "def chat(request: ChatRequest):\n    \"\"\"Handle chat requests with RAG.\"\"\"\n    try:\n        logger.info(\n            \"Processing chat request\",\n            message_length=len(request.message),\n            conversation_id=request.conversation_id,\n        )\n        conversation_id = request.conversation_id\n        # If no conversation_id provided, create a new conversation",
         "detail": "backend.app.api.routes.chat",
         "documentation": {}
     },
@@ -1628,7 +1661,7 @@
         "kind": 5,
         "importPath": "backend.app.api.routes.chat",
         "description": "backend.app.api.routes.chat",
-        "peekOfCode": "logger = structlog.get_logger()\nrouter = APIRouter()\n@router.post(\"/chat\", response_model=ChatResponse)\ndef chat(request: ChatRequest):\n    \"\"\"Handle chat requests with RAG.\"\"\"\n    try:\n        logger.info(\"Processing chat request\", message_length=len(request.message), \n                   conversation_id=request.conversation_id)\n        # If conversation_id is provided, save the user message\n        if request.conversation_id:",
+        "peekOfCode": "logger = structlog.get_logger()\nrouter = APIRouter()\n@router.post(\"/chat\", response_model=ChatResponse)\ndef chat(request: ChatRequest):\n    \"\"\"Handle chat requests with RAG.\"\"\"\n    try:\n        logger.info(\n            \"Processing chat request\",\n            message_length=len(request.message),\n            conversation_id=request.conversation_id,",
         "detail": "backend.app.api.routes.chat",
         "documentation": {}
     },
@@ -1637,7 +1670,7 @@
         "kind": 5,
         "importPath": "backend.app.api.routes.chat",
         "description": "backend.app.api.routes.chat",
-        "peekOfCode": "router = APIRouter()\n@router.post(\"/chat\", response_model=ChatResponse)\ndef chat(request: ChatRequest):\n    \"\"\"Handle chat requests with RAG.\"\"\"\n    try:\n        logger.info(\"Processing chat request\", message_length=len(request.message), \n                   conversation_id=request.conversation_id)\n        # If conversation_id is provided, save the user message\n        if request.conversation_id:\n            try:",
+        "peekOfCode": "router = APIRouter()\n@router.post(\"/chat\", response_model=ChatResponse)\ndef chat(request: ChatRequest):\n    \"\"\"Handle chat requests with RAG.\"\"\"\n    try:\n        logger.info(\n            \"Processing chat request\",\n            message_length=len(request.message),\n            conversation_id=request.conversation_id,\n        )",
         "detail": "backend.app.api.routes.chat",
         "documentation": {}
     },
@@ -1691,7 +1724,7 @@
         "kind": 6,
         "importPath": "backend.app.api.routes.conversations",
         "description": "backend.app.api.routes.conversations",
-        "peekOfCode": "class UpdateTitleRequest(BaseModel):\n    \"\"\"Request to update conversation title.\"\"\"\n    title: str = Field(..., min_length=1, max_length=200)\n@router.post(\"/conversations\", response_model=CreateConversationResponse)\nasync def create_conversation(request: CreateConversationRequest):\n    \"\"\"Create a new conversation.\"\"\"\n    try:\n        conversation_id = conversation_service.create_conversation(\n            title=request.title,\n            metadata=request.metadata",
+        "peekOfCode": "class UpdateTitleRequest(BaseModel):\n    \"\"\"Request to update conversation title.\"\"\"\n    title: str = Field(..., min_length=1, max_length=200)\n@router.post(\"/conversations\", response_model=CreateConversationResponse)\nasync def create_conversation(request: CreateConversationRequest):\n    \"\"\"Create a new conversation.\"\"\"\n    try:\n        conversation_id = conversation_service.create_conversation(\n            title=request.title, metadata=request.metadata\n        )",
         "detail": "backend.app.api.routes.conversations",
         "documentation": {}
     },
@@ -1718,7 +1751,7 @@
         "kind": 5,
         "importPath": "backend.app.api.routes.health",
         "description": "backend.app.api.routes.health",
-        "peekOfCode": "router = APIRouter()\n@router.get(\"/health\", response_model=HealthResponse)\nasync def health_check(deep: bool = Query(False, description=\"Perform deep health check including external services\")):\n    \"\"\"Health check endpoint with optional deep checks for external services.\"\"\"\n    if not deep:\n        return HealthResponse(status=\"healthy\", version=settings.api_version)\n    # Deep check - verify external services\n    services_status = {\n        \"llm_service\": llm_service.is_available(),\n        \"vector_store\": vector_store.is_available()",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/health\", response_model=HealthResponse)\nasync def health_check(\n    deep: bool = Query(False, description=\"Perform deep health check including external services\")\n):\n    \"\"\"Health check endpoint with optional deep checks for external services.\"\"\"\n    if not deep:\n        return HealthResponse(status=\"healthy\", version=settings.api_version)\n    # Deep check - verify external services\n    llm_info = llm_service.get_provider_info()",
         "detail": "backend.app.api.routes.health",
         "documentation": {}
     },
@@ -1727,7 +1760,7 @@
         "kind": 6,
         "importPath": "backend.app.api.routes.memory",
         "description": "backend.app.api.routes.memory",
-        "peekOfCode": "class MemorySettingsUpdate(BaseModel):\n    \"\"\"Request model for updating memory settings.\"\"\"\n    enabled: bool = Field(..., description=\"Enable or disable conversation memory\")\n    window_size: int = Field(..., ge=2, le=20, description=\"Number of Q&A pairs to retain (2, 5, 10, or 20)\")\nclass MemorySettingsResponse(BaseModel):\n    \"\"\"Response model for memory settings.\"\"\"\n    enabled: bool\n    window_size: int\n    current_messages: int\n    conversation_pairs: int",
+        "peekOfCode": "class MemorySettingsUpdate(BaseModel):\n    \"\"\"Request model for updating memory settings.\"\"\"\n    enabled: bool = Field(..., description=\"Enable or disable conversation memory\")\n    window_size: int = Field(\n        ..., ge=2, le=20, description=\"Number of Q&A pairs to retain (2, 5, 10, or 20)\"\n    )\nclass MemorySettingsResponse(BaseModel):\n    \"\"\"Response model for memory settings.\"\"\"\n    enabled: bool\n    window_size: int",
         "detail": "backend.app.api.routes.memory",
         "documentation": {}
     },
@@ -1745,7 +1778,7 @@
         "kind": 5,
         "importPath": "backend.app.api.routes.memory",
         "description": "backend.app.api.routes.memory",
-        "peekOfCode": "router = APIRouter()\nclass MemorySettingsUpdate(BaseModel):\n    \"\"\"Request model for updating memory settings.\"\"\"\n    enabled: bool = Field(..., description=\"Enable or disable conversation memory\")\n    window_size: int = Field(..., ge=2, le=20, description=\"Number of Q&A pairs to retain (2, 5, 10, or 20)\")\nclass MemorySettingsResponse(BaseModel):\n    \"\"\"Response model for memory settings.\"\"\"\n    enabled: bool\n    window_size: int\n    current_messages: int",
+        "peekOfCode": "router = APIRouter()\nclass MemorySettingsUpdate(BaseModel):\n    \"\"\"Request model for updating memory settings.\"\"\"\n    enabled: bool = Field(..., description=\"Enable or disable conversation memory\")\n    window_size: int = Field(\n        ..., ge=2, le=20, description=\"Number of Q&A pairs to retain (2, 5, 10, or 20)\"\n    )\nclass MemorySettingsResponse(BaseModel):\n    \"\"\"Response model for memory settings.\"\"\"\n    enabled: bool",
         "detail": "backend.app.api.routes.memory",
         "documentation": {}
     },
@@ -1799,7 +1832,7 @@
         "kind": 6,
         "importPath": "backend.app.core.config",
         "description": "backend.app.core.config",
-        "peekOfCode": "class Settings(BaseSettings):\n    \"\"\"Application settings loaded from environment variables.\"\"\"\n    # Groq Settings\n    groq_api_key: str = \"\"\n    groq_model: str = \"llama-3.3-70b-versatile\"\n    groq_temperature: float = 0.3\n    # OpenAI Settings (for embeddings)\n    openai_api_key: str = \"\"\n    # Pinecone Settings\n    pinecone_api_key: str = \"\"",
+        "peekOfCode": "class Settings(BaseSettings):\n    \"\"\"Application settings loaded from environment variables.\"\"\"\n    # LLM Provider Selection (groq or openai)\n    llm_provider: str = \"groq\"  # Default to groq, set to \"openai\" to use OpenAI\n    # Groq Settings\n    groq_api_key: str = \"\"\n    groq_model: str = \"llama-3.3-70b-versatile\"\n    groq_temperature: float = 0.3\n    # OpenAI Settings\n    openai_api_key: str = \"\"",
         "detail": "backend.app.core.config",
         "documentation": {}
     },
@@ -1862,7 +1895,7 @@
         "kind": 2,
         "importPath": "backend.app.core.markdown_renderer",
         "description": "backend.app.core.markdown_renderer",
-        "peekOfCode": "def render_simple_markdown(text: str, sources: List[str], extra_terms: Optional[Set[str]] = None) -> str:\n    \"\"\"Render simple markdown for fallback responses with inline citations.\"\"\"\n    def B(s: str) -> str:\n        return bold_keywords(s, extra_terms=extra_terms)\n    # Bold the main text\n    bolded_text = B(text)\n    # Extract page numbers from the text and add inline citations\n    import re\n    # Find all existing [Page X] citations in the text\n    existing_citations = re.findall(r'\\[Page\\s+([\\d.]+)\\]', bolded_text)",
+        "peekOfCode": "def render_simple_markdown(\n    text: str, sources: List[str], extra_terms: Optional[Set[str]] = None\n) -> str:\n    \"\"\"Render simple markdown for fallback responses with inline citations.\"\"\"\n    def B(s: str) -> str:\n        return bold_keywords(s, extra_terms=extra_terms)\n    # Bold the main text\n    bolded_text = B(text)\n    # Extract page numbers from the text and add inline citations\n    import re",
         "detail": "backend.app.core.markdown_renderer",
         "documentation": {}
     },
@@ -1871,7 +1904,7 @@
         "kind": 5,
         "importPath": "backend.app.core.markdown_renderer",
         "description": "backend.app.core.markdown_renderer",
-        "peekOfCode": "BASE_TERMS = {\n    \"shariah\", \"shari'ah\", \"sharia\", \"fiqh\", \"fatwa\", \"aaoifi\",\n    \"riba\", \"gharar\", \"maysir\",\n    \"murabaha\", \"mudarabah\", \"musharakah\", \"ijarah\", \"tawarruq\",\n    \"wakalah\", \"sukuk\", \"guarantee\", \"pledge\", \"contract\", \"resolution\",\n    \"supervisory board\", \"shariah board\", \"sharia board\", \"enforceable\", \"prohibition\",\n    \"monitoring\", \"reporting\", \"governance\", \"compliance\", \"islamic\",\n    \"halal\", \"haram\", \"makruh\", \"mandub\", \"mubah\",\n    \"qard\", \"salam\", \"istisna\", \"kafalah\", \"hawalah\",\n    \"profit\", \"loss\", \"partnership\", \"transaction\", \"investment\",",
+        "peekOfCode": "BASE_TERMS = {\n    \"shariah\",\n    \"shari'ah\",\n    \"sharia\",\n    \"fiqh\",\n    \"fatwa\",\n    \"aaoifi\",\n    \"riba\",\n    \"gharar\",\n    \"maysir\",",
         "detail": "backend.app.core.markdown_renderer",
         "documentation": {}
     },
@@ -1916,7 +1949,7 @@
         "kind": 6,
         "importPath": "backend.app.schemas.chat",
         "description": "backend.app.schemas.chat",
-        "peekOfCode": "class ChatRequest(BaseModel):\n    \"\"\"Chat request model.\"\"\"\n    message: str = Field(..., min_length=1, max_length=2000, description=\"User's question\")\n    conversation_history: Optional[List[dict]] = Field(default=[], description=\"Previous messages\")\n    conversation_id: Optional[int] = Field(default=None, description=\"Optional conversation ID to save messages\")\n    tone: Optional[ResponseTone] = Field(default=ResponseTone.CONVERSATIONAL, description=\"Response tone/style\")\nclass ChatResponse(BaseModel):\n    \"\"\"Chat response model with sources.\"\"\"\n    answer: str = Field(..., description=\"AI-generated answer\")\n    sources: List[SourceDocument] = Field(default_factory=list, description=\"Source documents with page references\")",
+        "peekOfCode": "class ChatRequest(BaseModel):\n    \"\"\"Chat request model.\"\"\"\n    message: str = Field(..., min_length=1, max_length=2000, description=\"User's question\")\n    conversation_history: Optional[List[dict]] = Field(default=[], description=\"Previous messages\")\n    conversation_id: Optional[int] = Field(\n        default=None, description=\"Optional conversation ID to save messages\"\n    )\n    tone: Optional[ResponseTone] = Field(\n        default=ResponseTone.CONVERSATIONAL, description=\"Response tone/style\"\n    )",
         "detail": "backend.app.schemas.chat",
         "documentation": {}
     },
@@ -1925,7 +1958,7 @@
         "kind": 6,
         "importPath": "backend.app.schemas.chat",
         "description": "backend.app.schemas.chat",
-        "peekOfCode": "class ChatResponse(BaseModel):\n    \"\"\"Chat response model with sources.\"\"\"\n    answer: str = Field(..., description=\"AI-generated answer\")\n    sources: List[SourceDocument] = Field(default_factory=list, description=\"Source documents with page references\")\n    follow_up_questions: Optional[List[str]] = Field(default=None, description=\"Suggested follow-up questions\")\n    metadata: Optional[dict] = Field(default_factory=dict, description=\"Additional metadata\")\nclass HealthResponse(BaseModel):\n    \"\"\"Health check response.\"\"\"\n    status: str = \"healthy\"\n    version: str = \"1.0.0\"",
+        "peekOfCode": "class ChatResponse(BaseModel):\n    \"\"\"Chat response model with sources.\"\"\"\n    answer: str = Field(..., description=\"AI-generated answer\")\n    sources: List[SourceDocument] = Field(\n        default_factory=list, description=\"Source documents with page references\"\n    )\n    follow_up_questions: Optional[List[str]] = Field(\n        default=None, description=\"Suggested follow-up questions\"\n    )\n    metadata: Optional[dict] = Field(default_factory=dict, description=\"Additional metadata\")",
         "detail": "backend.app.schemas.chat",
         "documentation": {}
     },
@@ -1943,7 +1976,7 @@
         "kind": 6,
         "importPath": "backend.app.schemas.qa_response",
         "description": "backend.app.schemas.qa_response",
-        "peekOfCode": "class QAResponse(BaseModel):\n    \"\"\"Flexible response schema that adapts to question type.\"\"\"\n    executive_summary: List[str] = Field(\n        default_factory=list,\n        description=\"Optional: 2-5 key points for complex topics. Leave empty for simple questions.\"\n    )\n    requirements_by_page: Dict[str, List[str]] = Field(\n        default_factory=dict,\n        description=\"Optional: Requirements grouped by page when relevant. Can be empty for non-requirement questions.\"\n    )",
+        "peekOfCode": "class QAResponse(BaseModel):\n    \"\"\"Flexible response schema that adapts to question type.\"\"\"\n    executive_summary: List[str] = Field(\n        default_factory=list,\n        description=\"Optional: 2-5 key points for complex topics. Leave empty for simple questions.\",\n    )\n    requirements_by_page: Dict[str, List[str]] = Field(\n        default_factory=dict,\n        description=\"Optional: Requirements grouped by page when relevant. Can be empty for non-requirement questions.\",\n    )",
         "detail": "backend.app.schemas.qa_response",
         "documentation": {}
     },
@@ -1988,7 +2021,7 @@
         "kind": 6,
         "importPath": "backend.app.services.document_processor",
         "description": "backend.app.services.document_processor",
-        "peekOfCode": "class DocumentProcessor:\n    \"\"\"Service for processing PDF documents.\"\"\"\n    def __init__(self):\n        self.text_splitter = RecursiveCharacterTextSplitter(\n            chunk_size=settings.chunk_size,\n            chunk_overlap=settings.chunk_overlap,\n            separators=[\"\\n\\n\", \"\\n\", \". \"]\n        )\n    def process_pdf(self, file_path: str) -> List[Document]:\n        \"\"\"Load and chunk PDF file.\"\"\"",
+        "peekOfCode": "class DocumentProcessor:\n    \"\"\"Service for processing PDF documents.\"\"\"\n    def __init__(self):\n        self.text_splitter = RecursiveCharacterTextSplitter(\n            chunk_size=settings.chunk_size,\n            chunk_overlap=settings.chunk_overlap,\n            separators=[\"\\n\\n\", \"\\n\", \". \"],\n        )\n    def process_pdf(self, file_path: str) -> List[Document]:\n        \"\"\"Load and chunk PDF file.\"\"\"",
         "detail": "backend.app.services.document_processor",
         "documentation": {}
     },
@@ -2006,7 +2039,7 @@
         "kind": 5,
         "importPath": "backend.app.services.document_processor",
         "description": "backend.app.services.document_processor",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nclass DocumentProcessor:\n    \"\"\"Service for processing PDF documents.\"\"\"\n    def __init__(self):\n        self.text_splitter = RecursiveCharacterTextSplitter(\n            chunk_size=settings.chunk_size,\n            chunk_overlap=settings.chunk_overlap,\n            separators=[\"\\n\\n\", \"\\n\", \". \"]\n        )\n    def process_pdf(self, file_path: str) -> List[Document]:",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass DocumentProcessor:\n    \"\"\"Service for processing PDF documents.\"\"\"\n    def __init__(self):\n        self.text_splitter = RecursiveCharacterTextSplitter(\n            chunk_size=settings.chunk_size,\n            chunk_overlap=settings.chunk_overlap,\n            separators=[\"\\n\\n\", \"\\n\", \". \"],\n        )\n    def process_pdf(self, file_path: str) -> List[Document]:",
         "detail": "backend.app.services.document_processor",
         "documentation": {}
     },
@@ -2024,7 +2057,7 @@
         "kind": 6,
         "importPath": "backend.app.services.llm_service",
         "description": "backend.app.services.llm_service",
-        "peekOfCode": "class LLMService:\n    \"\"\"Service for LLM interactions using Groq with lazy initialization.\"\"\"\n    def __init__(self):\n        \"\"\"Initialize service without creating LLM client yet.\"\"\"\n        self._llm: Optional[ChatGroq] = None\n        self._initialized = False\n        self._initialization_error: Optional[str] = None\n        self.system_prompt = \"\"\"You are a senior consultant specializing in AAOIFI Sharia Standards. Provide specific, detailed, and professionally structured responses. Extract and cite actual principles, requirements, and guidelines from the standards. Use precise terminology and cite page numbers as [Page X] for each distinct point.\"\"\"\n    def _initialize_llm(self):\n        \"\"\"Lazily initialize the Groq chat model on first access.\"\"\"",
+        "peekOfCode": "class LLMService:\n    \"\"\"Service for LLM interactions with support for Groq and OpenAI providers.\"\"\"\n    def __init__(self):\n        \"\"\"Initialize service without creating LLM client yet.\"\"\"\n        self._llm: Optional[Union[ChatGroq, ChatOpenAI]] = None\n        self._initialized = False\n        self._initialization_error: Optional[str] = None\n        self._current_provider: Optional[str] = None\n        self.system_prompt = \"\"\"You are a senior consultant specializing in AAOIFI Sharia Standards. Provide specific, detailed, and professionally structured responses. Extract and cite actual principles, requirements, and guidelines from the standards. Use precise terminology and cite page numbers as [Page X] for each distinct point.\"\"\"\n    def _initialize_llm(self):",
         "detail": "backend.app.services.llm_service",
         "documentation": {}
     },
@@ -2033,7 +2066,7 @@
         "kind": 5,
         "importPath": "backend.app.services.llm_service",
         "description": "backend.app.services.llm_service",
-        "peekOfCode": "logger = structlog.get_logger()\nclass LLMService:\n    \"\"\"Service for LLM interactions using Groq with lazy initialization.\"\"\"\n    def __init__(self):\n        \"\"\"Initialize service without creating LLM client yet.\"\"\"\n        self._llm: Optional[ChatGroq] = None\n        self._initialized = False\n        self._initialization_error: Optional[str] = None\n        self.system_prompt = \"\"\"You are a senior consultant specializing in AAOIFI Sharia Standards. Provide specific, detailed, and professionally structured responses. Extract and cite actual principles, requirements, and guidelines from the standards. Use precise terminology and cite page numbers as [Page X] for each distinct point.\"\"\"\n    def _initialize_llm(self):",
+        "peekOfCode": "logger = structlog.get_logger()\nclass LLMService:\n    \"\"\"Service for LLM interactions with support for Groq and OpenAI providers.\"\"\"\n    def __init__(self):\n        \"\"\"Initialize service without creating LLM client yet.\"\"\"\n        self._llm: Optional[Union[ChatGroq, ChatOpenAI]] = None\n        self._initialized = False\n        self._initialization_error: Optional[str] = None\n        self._current_provider: Optional[str] = None\n        self.system_prompt = \"\"\"You are a senior consultant specializing in AAOIFI Sharia Standards. Provide specific, detailed, and professionally structured responses. Extract and cite actual principles, requirements, and guidelines from the standards. Use precise terminology and cite page numbers as [Page X] for each distinct point.\"\"\"",
         "detail": "backend.app.services.llm_service",
         "documentation": {}
     },
@@ -2051,7 +2084,7 @@
         "kind": 6,
         "importPath": "backend.app.services.vector_store",
         "description": "backend.app.services.vector_store",
-        "peekOfCode": "class VectorStoreService:\n    \"\"\"Service for managing vector store operations with lazy initialization.\"\"\"\n    def __init__(self):\n        self._embeddings: Optional[HuggingFaceEmbeddings] = None\n        self._pinecone_client: Optional[Pinecone] = None\n        self._index = None\n        self._vectorstore: Optional[PineconeVectorStore] = None\n        self._initialized = False\n    def _ensure_initialized(self):\n        \"\"\"Lazy initialization of Pinecone client and vector store.\"\"\"",
+        "peekOfCode": "class VectorStoreService:\n    \"\"\"Service for managing vector store operations with lazy initialization.\"\"\"\n    def __init__(self):\n        self._embeddings: Optional[\"HuggingFaceEmbeddings\"] = None\n        self._pinecone_client: Optional[\"Pinecone\"] = None\n        self._index = None\n        self._vectorstore: Optional[\"PineconeVectorStore\"] = None\n        self._initialized = False\n    def _ensure_initialized(self):\n        \"\"\"Lazy initialization of Pinecone client and vector store.\"\"\"",
         "detail": "backend.app.services.vector_store",
         "documentation": {}
     },
@@ -2060,7 +2093,7 @@
         "kind": 5,
         "importPath": "backend.app.services.vector_store",
         "description": "backend.app.services.vector_store",
-        "peekOfCode": "logger = structlog.get_logger()\nclass VectorStoreService:\n    \"\"\"Service for managing vector store operations with lazy initialization.\"\"\"\n    def __init__(self):\n        self._embeddings: Optional[HuggingFaceEmbeddings] = None\n        self._pinecone_client: Optional[Pinecone] = None\n        self._index = None\n        self._vectorstore: Optional[PineconeVectorStore] = None\n        self._initialized = False\n    def _ensure_initialized(self):",
+        "peekOfCode": "logger = structlog.get_logger()\nclass VectorStoreService:\n    \"\"\"Service for managing vector store operations with lazy initialization.\"\"\"\n    def __init__(self):\n        self._embeddings: Optional[\"HuggingFaceEmbeddings\"] = None\n        self._pinecone_client: Optional[\"Pinecone\"] = None\n        self._index = None\n        self._vectorstore: Optional[\"PineconeVectorStore\"] = None\n        self._initialized = False\n    def _ensure_initialized(self):",
         "detail": "backend.app.services.vector_store",
         "documentation": {}
     },
@@ -2078,7 +2111,7 @@
         "kind": 5,
         "importPath": "backend.app.main",
         "description": "backend.app.main",
-        "peekOfCode": "logger = structlog.get_logger()\nlimiter = Limiter(key_func=get_remote_address)\napp = FastAPI(\n    title=settings.api_title,\n    version=settings.api_version,\n    description=\"RAG chatbot for AAOIFI Sharia Standards\"\n)\napp.state.limiter = limiter\napp.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)\napp.add_middleware(",
+        "peekOfCode": "logger = structlog.get_logger()\nlimiter = Limiter(key_func=get_remote_address)\n@asynccontextmanager\nasync def lifespan(app: FastAPI):\n    \"\"\"Lifespan context manager for startup and shutdown events.\"\"\"\n    # Startup: Just log, don't block - services will initialize on first request\n    logger.info(\"🚀 Application started - services will initialize on first request\")\n    yield  # Application runs here\n    # Shutdown: Clean up resources\n    logger.info(\"👋 Shutting down application...\")",
         "detail": "backend.app.main",
         "documentation": {}
     },
@@ -2087,7 +2120,7 @@
         "kind": 5,
         "importPath": "backend.app.main",
         "description": "backend.app.main",
-        "peekOfCode": "limiter = Limiter(key_func=get_remote_address)\napp = FastAPI(\n    title=settings.api_title,\n    version=settings.api_version,\n    description=\"RAG chatbot for AAOIFI Sharia Standards\"\n)\napp.state.limiter = limiter\napp.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)\napp.add_middleware(\n    CORSMiddleware,",
+        "peekOfCode": "limiter = Limiter(key_func=get_remote_address)\n@asynccontextmanager\nasync def lifespan(app: FastAPI):\n    \"\"\"Lifespan context manager for startup and shutdown events.\"\"\"\n    # Startup: Just log, don't block - services will initialize on first request\n    logger.info(\"🚀 Application started - services will initialize on first request\")\n    yield  # Application runs here\n    # Shutdown: Clean up resources\n    logger.info(\"👋 Shutting down application...\")\napp = FastAPI(",
         "detail": "backend.app.main",
         "documentation": {}
     },
@@ -2096,7 +2129,7 @@
         "kind": 5,
         "importPath": "backend.app.main",
         "description": "backend.app.main",
-        "peekOfCode": "app = FastAPI(\n    title=settings.api_title,\n    version=settings.api_version,\n    description=\"RAG chatbot for AAOIFI Sharia Standards\"\n)\napp.state.limiter = limiter\napp.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],",
+        "peekOfCode": "app = FastAPI(\n    title=settings.api_title,\n    version=settings.api_version,\n    description=\"RAG chatbot for AAOIFI Sharia Standards\",\n    lifespan=lifespan,\n)\napp.state.limiter = limiter\napp.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)  # type: ignore[arg-type]\napp.add_middleware(\n    CORSMiddleware,",
         "detail": "backend.app.main",
         "documentation": {}
     },
@@ -2105,8 +2138,17 @@
         "kind": 5,
         "importPath": "backend.app.main",
         "description": "backend.app.main",
-        "peekOfCode": "app.state.limiter = limiter\napp.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\napp.include_router(chat.router, prefix=\"/api/v1\", tags=[\"chat\"])",
+        "peekOfCode": "app.state.limiter = limiter\napp.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)  # type: ignore[arg-type]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\napp.include_router(chat.router, prefix=\"/api/v1\", tags=[\"chat\"])",
         "detail": "backend.app.main",
+        "documentation": {}
+    },
+    {
+        "label": "download_embeddings_model",
+        "kind": 2,
+        "importPath": "backend.download_models",
+        "description": "backend.download_models",
+        "peekOfCode": "def download_embeddings_model():\n    \"\"\"Download and cache the embeddings model.\"\"\"\n    print(\"=\" * 70)\n    print(\" 📥 Downloading Embeddings Model\")\n    print(\"=\" * 70)\n    print()\n    print(\"This will download the sentence-transformers model (~80MB)\")\n    print(\"Future startups will be much faster!\")\n    print()\n    # Create cache directory",
+        "detail": "backend.download_models",
         "documentation": {}
     },
     {
@@ -2125,6 +2167,24 @@
         "description": "backend.reset_and_upload",
         "peekOfCode": "def upload_pdf():\n    \"\"\"Upload PDF to Pinecone with new embeddings.\"\"\"\n    pdf_path = Path(__file__).parent.parent / \"AAOIFI - Shariaa Standards-ENG.pdf\"\n    print(f\"\\n📄 Looking for PDF at: {pdf_path}\")\n    if not pdf_path.exists():\n        print(f\"❌ Error: PDF not found at {pdf_path}\")\n        return False\n    try:\n        print(\"\\n📝 Processing PDF...\")\n        chunks = document_processor.process_pdf(str(pdf_path))",
         "detail": "backend.reset_and_upload",
+        "documentation": {}
+    },
+    {
+        "label": "print_banner",
+        "kind": 2,
+        "importPath": "backend.start",
+        "description": "backend.start",
+        "peekOfCode": "def print_banner():\n    \"\"\"Print startup banner.\"\"\"\n    print(\"\\n\" + \"=\" * 70)\n    print(\" 🚀 AAOIFI Standards RAG Chatbot - Backend Server\")\n    print(\"=\" * 70)\n    print(f\" Mode: {'🔧 Development' if settings.debug else '🚀 Production'}\")\n    print(f\" API: http://localhost:8000\")\n    print(f\" Docs: http://localhost:8000/docs\")\n    print(\"=\" * 70 + \"\\n\")\ndef main():",
+        "detail": "backend.start",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "backend.start",
+        "description": "backend.start",
+        "peekOfCode": "def main():\n    \"\"\"Start the server with pre-warming.\"\"\"\n    print_banner()\n    print(\"📦 Loading application...\")\n    # Run the server (pre-warming happens in lifespan)\n    uvicorn.run(\n        \"app.main:app\",\n        host=\"0.0.0.0\",\n        port=8000,\n        reload=settings.debug,",
+        "detail": "backend.start",
         "documentation": {}
     },
     {

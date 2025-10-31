@@ -1,14 +1,12 @@
 """Enhanced RAG engine with structured, consultant-grade responses."""
+
 from typing import Tuple, List, Dict, Any
 import re
-import json
 import logging
-from langchain.chains import ConversationalRetrievalChain
-from langchain.memory import ConversationBufferMemory
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.chat_history import BaseChatMessageHistory, InMemoryChatMessageHistory
+from langchain_core.messages import HumanMessage, AIMessage
 from langchain.schema import Document
 from langchain_core.output_parsers import JsonOutputParser
-from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_core.prompts import ChatPromptTemplate as CoreChatPromptTemplate
 
 from app.core.config import settings
@@ -21,37 +19,41 @@ from app.core.json_parser import robust_parser
 
 class RAGEnginePro:
     """Enhanced RAG engine with structured, consultant-grade responses."""
-    
+
     def __init__(self, *, max_sources: int = 5):
         self.max_sources = max_sources
         self._llm = None
         self._retriever = None
         self._initialized = False
-        
+
         # Memory control settings
         self.memory_enabled = True
         self.memory_window_size = 5  # Number of message pairs to keep
-        
+
         # Performance optimization
         self.use_multi_query = False  # Disable multi-query for faster responses
         self.max_retrieval_docs = 8  # Reduced from potential higher numbers
-        
-        # Initialize memory
-        self.memory = ConversationBufferMemory(
-            memory_key="chat_history",
-            output_key="answer",
-            return_messages=False,
-        )
-        
+
+        # Initialize modern chat message history (replaces deprecated ConversationBufferMemory)
+        self.chat_history: BaseChatMessageHistory = InMemoryChatMessageHistory()
+
         # JSON parser for structured output
         self.json_parser = JsonOutputParser(pydantic_object=QAResponse)
-        
+
         # Multi-query expansion prompt
-        self.multi_query_prompt = CoreChatPromptTemplate.from_messages([
-            ("system", "You are an expert at generating search queries for AAOIFI Sharia Standards. Generate diverse queries that would find rules, conditions, definitions, exceptions, and requirements."),
-            ("human", "Generate 4 alternative search queries for finding information about: {question}\n\nEach query should focus on a different aspect:\n1. Rules and requirements\n2. Conditions and exceptions\n3. Definitions and terminology\n4. Implementation procedures\n\nReturn as JSON with 'queries' array.")
-        ])
-        
+        self.multi_query_prompt = CoreChatPromptTemplate.from_messages(
+            [
+                (
+                    "system",
+                    "You are an expert at generating search queries for AAOIFI Sharia Standards. Generate diverse queries that would find rules, conditions, definitions, exceptions, and requirements.",
+                ),
+                (
+                    "human",
+                    "Generate 4 alternative search queries for finding information about: {question}\n\nEach query should focus on a different aspect:\n1. Rules and requirements\n2. Conditions and exceptions\n3. Definitions and terminology\n4. Implementation procedures\n\nReturn as JSON with 'queries' array.",
+                ),
+            ]
+        )
+
         # Tone-specific system prompts
         self.tone_prompts = {
             "conversational": """You are a friendly, knowledgeable expert on AAOIFI Sharia Standards. Respond naturally like ChatGPT - warm, engaging, and conversational.
@@ -72,7 +74,6 @@ STYLE:
 
 FORMAT:
 Paragraph → Bullet points (when listing) → Closing paragraph. Adapt based on question type.""",
-            
             "concise": """You are a direct, efficient expert on AAOIFI Sharia Standards. Provide SHORT, to-the-point answers with brief paragraphs and bullets.
 
 CRITICAL: Put your ENTIRE response in the "answer" field. Use paragraphs and bullets efficiently.
@@ -87,7 +88,6 @@ STYLE:
 
 FORMAT:
 Brief intro paragraph → Bullets (if listing items) → Done. Keep it tight and focused.""",
-            
             "detailed": """You are a thorough expert on AAOIFI Sharia Standards. Provide COMPREHENSIVE, in-depth explanations with clear structure.
 
 CRITICAL: Put your ENTIRE response in the "answer" field. Use full markdown formatting.
@@ -106,7 +106,6 @@ STYLE:
 
 FORMAT:
 Intro paragraph → ### Section Headers → Bullet points → Examples → Summary. Most structured tone.""",
-            
             "professional": """You are a senior consultant on AAOIFI Sharia Standards. Respond in a FORMAL, business-grade manner with paragraphs and bullets.
 
 CRITICAL: Put your ENTIRE response in the "answer" field combining formal paragraphs and bullet points.
@@ -124,7 +123,6 @@ STYLE:
 
 FORMAT:
 Formal intro paragraph → Bullet points (for requirements/lists) → Summary paragraph. Business professional style.""",
-            
             "simple": """You are a patient teacher explaining AAOIFI Sharia Standards in SIMPLE terms using easy-to-read paragraphs and bullets.
 
 CRITICAL: Put your ENTIRE response in the "answer" field. Use simple paragraphs and bullets.
@@ -141,69 +139,64 @@ STYLE:
 - Check understanding with follow-up questions (in follow_up_questions array)
 
 FORMAT:
-Simple intro → Bullet points (for steps/lists) → Friendly conclusion. Like explaining to a friend."""
+Simple intro → Bullet points (for steps/lists) → Friendly conclusion. Like explaining to a friend.""",
         }
-        
+
         # Default prompt (will be replaced based on tone)
         self.structured_prompt = None
-    
+
     def _ensure_initialized(self):
         """Lazily initialize LLM and retriever on first use."""
         if self._initialized:
             return
-        
+
         self._initialized = True
         self._llm = llm_service.get_llm()
         self._retriever = vector_store.as_retriever(
             search_kwargs={"k": int(getattr(settings, "top_k_retrieval", 10))}
         )
-        
+
         # Create the structured chain (requires llm and retriever)
         def get_context_and_history(question: str) -> dict:
             # Get context from retriever
+            if self._retriever is None:
+                raise RuntimeError("Retriever not initialized")
             docs = self._retriever.invoke(question)
-            context_text = "\n\n".join([
-                f"[Page {doc.metadata.get('page', 'unknown')}]: {doc.page_content[:800]}"
-                for doc in docs[:5]
-            ])
-            
-            # Get chat history
-            chat_history = self.memory.chat_memory.messages[-2:] if self.memory.chat_memory.messages else []
-            
-            return {
-                "context": context_text,
-                "question": question,
-                "chat_history": chat_history
-            }
-        
-        self.structured_chain = (
-            get_context_and_history
-            | self.structured_prompt
-            | self._llm
-            | self.json_parser
-        )
-        
-        # Fallback chain for when structured parsing fails
-        self.fallback_chain = ConversationalRetrievalChain.from_llm(
-            llm=self._llm,
-            retriever=self._retriever,
-            memory=self.memory,
-            return_source_documents=True,
-            verbose=False,
-        )
-    
+            context_text = "\n\n".join(
+                [
+                    f"[Page {doc.metadata.get('page', 'unknown')}]: {doc.page_content[:800]}"
+                    for doc in docs[:5]
+                ]
+            )
+
+            # Get chat history (use modern message history)
+            messages = self.chat_history.messages[-2:] if self.chat_history.messages else []
+
+            return {"context": context_text, "question": question, "chat_history": messages}
+
+        # Note: structured_chain will be built dynamically when needed
+        # since self.structured_prompt is set per-request based on tone
+
+        # Note: ConversationalRetrievalChain is deprecated, but keeping for fallback compatibility
+        # In production, should migrate fully to LCEL (LangChain Expression Language) chains
+        # For now, we'll handle chat history manually in the main path
+
     @property
     def llm(self):
         """Get LLM instance, initializing if needed."""
         self._ensure_initialized()
+        if self._llm is None:
+            raise RuntimeError("LLM not initialized")
         return self._llm
-    
+
     @property
     def retriever(self):
         """Get retriever instance, initializing if needed."""
         self._ensure_initialized()
+        if self._retriever is None:
+            raise RuntimeError("Retriever not initialized")
         return self._retriever
-    
+
     def _deduplicate_sources(self, docs: List[Document]) -> List[Document]:
         """Remove duplicate sources using (source,page,chunk_id/content-hash), keep order; cap to max_sources."""
         seen: set = set()
@@ -225,15 +218,15 @@ Simple intro → Bullet points (for steps/lists) → Friendly conclusion. Like e
             if len(unique_docs) >= self.max_sources:
                 break
         return unique_docs
-    
+
     def _add_scores_to_docs(self, docs_with_scores: List[tuple]) -> List[Document]:
         """Convert (Document, score) tuples to Documents with score in metadata."""
         result = []
         for doc, score in docs_with_scores:
             # Add score to metadata
-            if not hasattr(doc, 'metadata') or doc.metadata is None:
+            if not hasattr(doc, "metadata") or doc.metadata is None:
                 doc.metadata = {}
-            doc.metadata['relevance_score'] = float(score)
+            doc.metadata["relevance_score"] = float(score)
             result.append(doc)
         return result
 
@@ -241,73 +234,97 @@ Simple intro → Bullet points (for steps/lists) → Friendly conclusion. Like e
         """Use multi-query expansion to improve retrieval quality."""
         try:
             # Generate alternative queries
-            multi_query_chain = self.multi_query_prompt | self.llm | JsonOutputParser(pydantic_object=MultiQueryResponse)
+            if self._llm is None:
+                raise RuntimeError("LLM not initialized")
+            multi_query_chain = (
+                self.multi_query_prompt
+                | self._llm
+                | JsonOutputParser(pydantic_object=MultiQueryResponse)
+            )
             response = multi_query_chain.invoke({"question": question})
-            
+
             # Check if response is valid and extract queries
             queries = []
-            if hasattr(response, 'queries'):
+            if hasattr(response, "queries"):
                 queries = response.queries
-            elif isinstance(response, dict) and 'queries' in response:
-                queries = response['queries']
+            elif isinstance(response, dict) and "queries" in response:
+                queries = response["queries"]
             else:
                 raise ValueError("Invalid response format from multi-query")
-            
+
             # Ensure queries is a list of strings
             if not isinstance(queries, list):
                 raise ValueError("Queries must be a list")
-            
+
             # Retrieve documents for each query
             all_docs = []
             for query in queries:
                 # Ensure query is a string
                 if isinstance(query, dict):
                     # If query is a dict, try to extract the text
-                    query_str = query.get('query') or query.get('text') or str(query)
+                    query_str = query.get("query") or query.get("text") or str(query)
                 elif not isinstance(query, str):
                     query_str = str(query)
                 else:
                     query_str = query
-                
+
                 # Retrieve documents with the string query
-                docs = self.retriever.invoke(query_str)
+                if self._retriever is None:
+                    raise RuntimeError("Retriever not initialized")
+                docs = self._retriever.invoke(query_str)
                 all_docs.extend(docs)
-            
+
             # Deduplicate and return top results
             unique_docs = self._deduplicate_sources(all_docs)
-            return unique_docs[:self.max_sources]
-            
+            return unique_docs[: self.max_sources]
+
         except Exception as e:
             logging.warning(f"Multi-query retrieval failed: {e}")
             # Fallback to single query
-            return self.retriever.invoke(question)
-
+            if self._retriever is None:
+                raise RuntimeError("Retriever not initialized")
+            return self._retriever.invoke(question)
 
     def _is_greeting(self, question: str) -> bool:
         """Check if the question is a simple greeting."""
         # Normalize question
-        q_lower = question.lower().strip().rstrip('!?.,')
-        
+        q_lower = question.lower().strip().rstrip("!?.,")
+
         # Common greetings
         greetings = {
-            'hi', 'hello', 'hey', 'greetings', 'good morning', 'good afternoon',
-            'good evening', 'good day', 'howdy', 'hiya', 'yo', 'sup', "what's up",
-            'whats up', 'how are you', 'how do you do', 'salaam', 'salam',
-            'assalamu alaikum', 'peace be upon you'
+            "hi",
+            "hello",
+            "hey",
+            "greetings",
+            "good morning",
+            "good afternoon",
+            "good evening",
+            "good day",
+            "howdy",
+            "hiya",
+            "yo",
+            "sup",
+            "what's up",
+            "whats up",
+            "how are you",
+            "how do you do",
+            "salaam",
+            "salam",
+            "assalamu alaikum",
+            "peace be upon you",
         }
-        
+
         # Check if question matches any greeting
         if q_lower in greetings:
             return True
-        
+
         # Check if question is very short and contains greeting words
         if len(q_lower.split()) <= 4:
             for greeting in greetings:
                 if greeting in q_lower:
                     return True
-        
-        return False
 
+        return False
 
     def _handle_greeting(self, question: str) -> Tuple[str, List[Document], List[str]]:
         """Handle greeting messages with a friendly, brief response."""
@@ -326,19 +343,20 @@ Feel free to ask me anything about AAOIFI Standards! How can I assist you today?
             "What are the key principles of Islamic banking?",
             "Explain the requirements for Sharia compliance",
             "What are the different types of Islamic financial contracts?",
-            "Tell me about Murabaha transactions"
+            "Tell me about Murabaha transactions",
         ]
-        
+
         return (greeting_response, [], follow_ups)
 
-
-    def answer_question(self, question: str, tone: str = "conversational") -> Tuple[str, List[Document], List[str]]:
+    def answer_question(
+        self, question: str, tone: str = "conversational"
+    ) -> Tuple[str, List[Document], List[str]]:
         """Answer a question using enhanced RAG with tone-adaptive responses.
-        
+
         Args:
             question: User's question
             tone: Response tone (conversational, concise, detailed, professional, simple)
-        
+
         Returns:
             Tuple of (answer text, source documents, follow-up questions)
         """
@@ -346,13 +364,16 @@ Feel free to ask me anything about AAOIFI Standards! How can I assist you today?
             # Check if this is a simple greeting
             if self._is_greeting(question):
                 return self._handle_greeting(question)
-            
+
             # Create tone-specific prompt
             tone_system_prompt = self.tone_prompts.get(tone, self.tone_prompts["conversational"])
-            
-            self.structured_prompt = CoreChatPromptTemplate.from_messages([
-                ("system", tone_system_prompt + "\n\n{format_instructions}"),
-                ("human", """Context from AAOIFI Sharia Standards:
+
+            self.structured_prompt = CoreChatPromptTemplate.from_messages(
+                [
+                    ("system", tone_system_prompt + "\n\n{format_instructions}\n\nIMPORTANT: The 'answer' field is REQUIRED and must contain your complete response. All other fields are optional metadata."),
+                    (
+                        "human",
+                        """Context from AAOIFI Sharia Standards:
 {context}
 
 Question: {question}
@@ -360,27 +381,45 @@ Question: {question}
 Previous conversation:
 {chat_history}
 
-Provide a response in the requested style:""")
-            ])
-            
+Return a valid JSON object. The "answer" field must contain your full response text. Example structure:
+{{
+  "answer": "Your complete answer here with all the details...",
+  "executive_summary": ["Point 1", "Point 2"],
+  "sources": ["1", "2"],
+  "follow_up_questions": ["Question 1?", "Question 2?"],
+  "confidence_score": 0.9
+}}
+
+Provide a response in the requested style:""",
+                    ),
+                ]
+            )
+
+            # Ensure initialization before accessing retriever
+            self._ensure_initialized()
+
             # Get context and sources - use single query for speed
             if self.use_multi_query:
                 sources = self._multi_query_retrieval(question)
             else:
                 # Single query retrieval - much faster
-                sources = self.retriever.invoke(question)
-            
+                if self._retriever is None:
+                    raise RuntimeError("Retriever not initialized")
+                sources = self._retriever.invoke(question)
+
             sources = self._deduplicate_sources(sources)
-            
+
             # Create context text - reduce chunk size for faster processing
-            context_text = "\n\n".join([
-                f"[Page {doc.metadata.get('page', 'unknown')}]: {doc.page_content[:600]}"
-                for doc in sources[:4]  # Reduced from 5 to 4 for speed
-            ])
-            
+            context_text = "\n\n".join(
+                [
+                    f"[Page {doc.metadata.get('page', 'unknown')}]: {doc.page_content[:600]}"
+                    for doc in sources[:4]  # Reduced from 5 to 4 for speed
+                ]
+            )
+
             # Get chat history respecting memory settings
             chat_history = self._get_chat_history()
-            
+
             # Try structured response
             try:
                 # Create the prompt input
@@ -388,89 +427,185 @@ Provide a response in the requested style:""")
                     "context": context_text,
                     "question": question,
                     "chat_history": chat_history,
-                    "format_instructions": self.json_parser.get_format_instructions()
+                    "format_instructions": self.json_parser.get_format_instructions(),
                 }
-                
+
                 # Get structured response
+                if self.structured_prompt is None:
+                    raise RuntimeError("Structured prompt not set")
+                if self._llm is None:
+                    raise RuntimeError("LLM not initialized")
                 response = self.structured_prompt.invoke(prompt_input)
-                llm_response = self.llm.invoke(response)
-                
+                llm_response = self._llm.invoke(response)
+
                 # Use robust parser with fallback
-                llm_text = llm_response.content if hasattr(llm_response, 'content') else str(llm_response)
+                llm_text = (
+                    llm_response.content if hasattr(llm_response, "content") else str(llm_response)
+                )
+                # Ensure llm_text is a string
+                if not isinstance(llm_text, str):
+                    llm_text = str(llm_text)
                 parsed_response = robust_parser.parse_with_fallback(llm_text)
-                
+
                 # Log confidence score for monitoring
                 logging.info(f"Response parsed with confidence: {parsed_response.confidence_score}")
-                
+
                 if parsed_response:
+                    # Check if answer field is too short/empty (common LLM mistake)
+                    if not parsed_response.answer or len(parsed_response.answer.strip()) < 50:
+                        logging.warning(
+                            "LLM returned structured fields but empty/short answer field. "
+                            "Reconstructing answer from structured data."
+                        )
+                        # Reconstruct answer from structured fields
+                        answer_parts = []
+                        if parsed_response.executive_summary:
+                            answer_parts.append("**Key Points:**\n")
+                            for point in parsed_response.executive_summary:
+                                answer_parts.append(f"- {point}")
+                        if parsed_response.requirements_by_page:
+                            answer_parts.append("\n**Requirements:**")
+                            for page, reqs in parsed_response.requirements_by_page.items():
+                                for req in reqs:
+                                    answer_parts.append(f"- {req} (Page {page})")
+                        if parsed_response.implementation_checklist:
+                            answer_parts.append("\n**Implementation Steps:**")
+                            for i, step in enumerate(parsed_response.implementation_checklist, 1):
+                                answer_parts.append(f"{i}. {step}")
+
+                        if answer_parts:
+                            parsed_response.answer = "\n".join(answer_parts)
+                        else:
+                            parsed_response.answer = (
+                                "I found relevant information in the standards, but had trouble "
+                                "formatting a complete response. Please try rephrasing your question."
+                            )
+
                     # Render with bold keywords and structured format
-                    answer = render_markdown(parsed_response, extra_terms={"enforceability", "guarantee", "pledge"})
-                    follow_ups = parsed_response.follow_up_questions if parsed_response.follow_up_questions else []
-                    
+                    answer = render_markdown(
+                        parsed_response, extra_terms={"enforceability", "guarantee", "pledge"}
+                    )
+                    follow_ups = (
+                        parsed_response.follow_up_questions
+                        if parsed_response.follow_up_questions
+                        else []
+                    )
+
+                    # Save to chat history if memory is enabled
+                    if self.memory_enabled:
+                        self.chat_history.add_message(HumanMessage(content=question))
+                        self.chat_history.add_message(AIMessage(content=answer))
+
                     # Trim memory after successful response
                     self._trim_memory()
-                    
+
                     return answer, sources, follow_ups
                 else:
                     raise ValueError("Parser returned None (should not happen with fallback)")
-                    
+
             except Exception as structured_error:
                 logging.warning(f"Structured response failed: {structured_error}")
                 # Fall through to simple fallback
-                
-        except Exception as e:
+
+        except Exception:
             logging.exception("Error in structured response setup")
-            
+
         # Simple fallback - direct LLM call without memory
         try:
             logging.info("Using simple fallback without memory")
-            
+
+            # Ensure we have initialized retriever and sources
+            self._ensure_initialized()
+            if self._retriever is None:
+                raise RuntimeError("Retriever not initialized for fallback")
+
+            # Get sources if not already retrieved
+            try:
+                sources = self._retriever.invoke(question)
+                sources = self._deduplicate_sources(sources)
+            except Exception as e:
+                logging.warning(f"Failed to retrieve sources in fallback: {e}")
+                sources = []
+
+            # Create context text from sources
+            context_text = (
+                "\n\n".join(
+                    [
+                        f"[Page {doc.metadata.get('page', 'unknown')}]: {doc.page_content[:600]}"
+                        for doc in sources[:4]
+                    ]
+                )
+                if sources
+                else "No context available."
+            )
+
             # Create a simple prompt without memory
-            simple_prompt = CoreChatPromptTemplate.from_messages([
-                ("system", f"""You are an expert on AAOIFI Sharia Standards. Answer the question based on the context provided.
+            simple_prompt = CoreChatPromptTemplate.from_messages(
+                [
+                    (
+                        "system",
+                        f"""You are an expert on AAOIFI Sharia Standards. Answer the question based on the context provided.
 
 {self.tone_prompts.get(tone, self.tone_prompts['conversational'])}
 
-Provide a direct answer in paragraph form with page citations."""),
-                ("human", """Context from AAOIFI Sharia Standards:
+Provide a direct answer in paragraph form with page citations.""",
+                    ),
+                    (
+                        "human",
+                        """Context from AAOIFI Sharia Standards:
 {context}
 
 Question: {question}
 
-Answer the question based on the context above.""")
-            ])
-            
+Answer the question based on the context above.""",
+                    ),
+                ]
+            )
+
             # Get the response
-            prompt_result = simple_prompt.invoke({
-                "context": context_text,
-                "question": question
-            })
-            
-            llm_response = self.llm.invoke(prompt_result)
-            answer_text = llm_response.content if hasattr(llm_response, 'content') else str(llm_response)
-            
+            prompt_result = simple_prompt.invoke({"context": context_text, "question": question})
+
+            if self._llm is None:
+                raise RuntimeError("LLM not initialized")
+            llm_response = self._llm.invoke(prompt_result)
+            answer_text = (
+                llm_response.content if hasattr(llm_response, "content") else str(llm_response)
+            )
+
+            # Ensure answer_text is a string
+            if not isinstance(answer_text, str):
+                answer_text = str(answer_text)
+
             # Apply bold keywords
-            answer = render_simple_markdown(answer_text, [str(doc.metadata.get("page", "unknown")) for doc in sources[:3]], 
-                                          extra_terms={"enforceability", "guarantee", "pledge"})
-            
+            answer = render_simple_markdown(
+                answer_text,
+                [str(doc.metadata.get("page", "unknown")) for doc in sources[:3]],
+                extra_terms={"enforceability", "guarantee", "pledge"},
+            )
+
             # Generate basic follow-up questions for fallback
             fallback_follow_ups = [
                 "Could you provide more details on this topic?",
-                "How does this relate to other AAOIFI standards?"
+                "How does this relate to other AAOIFI standards?",
             ]
-            
+
+            # Save to chat history if memory is enabled
+            if self.memory_enabled:
+                self.chat_history.add_message(HumanMessage(content=question))
+                self.chat_history.add_message(AIMessage(content=answer))
+
             # Trim memory after fallback response
             self._trim_memory()
-            
+
             return answer, sources, fallback_follow_ups
-            
-        except Exception as fallback_error:
+
+        except Exception:
             logging.exception("Fallback also failed")
             return (
                 "I couldn't find specific information about that in the AAOIFI standards. "
                 "Try narrowing the question or specify the standard/section.",
                 [],
-                ["What specific aspect of AAOIFI standards are you interested in?"]
+                ["What specific aspect of AAOIFI standards are you interested in?"],
             )
 
     def _enforce_single_page_citation(self, text: str) -> str:
@@ -480,7 +615,7 @@ Answer the question based on the context above.""")
         out: List[str] = []
         last_end = 0
         for m in pattern.finditer(text):
-            out.append(text[last_end:m.start()])
+            out.append(text[last_end : m.start()])
             page = m.group(1)
             if page not in seen_pages:
                 out.append(m.group(0))  # keep first
@@ -493,21 +628,20 @@ Answer the question based on the context above.""")
     def clear_memory(self):
         """Clear conversation history."""
         try:
-            self.memory.clear()
+            self.chat_history.clear()
         except Exception:
-            self.memory = ConversationBufferMemory(
-                memory_key="chat_history", output_key="answer", return_messages=False
-            )
-    
+            # Reinitialize if clear fails
+            self.chat_history = InMemoryChatMessageHistory()
+
     def set_memory_enabled(self, enabled: bool):
         """Enable or disable conversation memory."""
         self.memory_enabled = enabled
         if not enabled:
             self.clear_memory()
-    
+
     def set_memory_window_size(self, size: int):
         """Set the number of message pairs to keep in memory.
-        
+
         Args:
             size: Number of Q&A pairs to retain (2, 5, 10, or 20)
         """
@@ -515,46 +649,49 @@ Answer the question based on the context above.""")
             raise ValueError("Memory window size must be 2, 5, 10, or 20")
         self.memory_window_size = size
         self._trim_memory()
-    
+
     def _trim_memory(self):
         """Trim memory to keep only the last N message pairs."""
-        if not self.memory_enabled or not self.memory.chat_memory.messages:
+        if not self.memory_enabled or not self.chat_history.messages:
             return
-        
+
         # Each Q&A pair = 2 messages (user + assistant)
         max_messages = self.memory_window_size * 2
-        messages = self.memory.chat_memory.messages
-        
+        messages = self.chat_history.messages
+
         if len(messages) > max_messages:
-            # Keep only the last N pairs
-            self.memory.chat_memory.messages = messages[-max_messages:]
-    
+            # Keep only the last N pairs by recreating the history
+            recent_messages = messages[-max_messages:]
+            self.chat_history.clear()
+            for msg in recent_messages:
+                self.chat_history.add_message(msg)
+
     def _get_chat_history(self) -> List:
         """Get chat history respecting memory settings."""
         if not self.memory_enabled:
             return []
-        
-        messages = self.memory.chat_memory.messages
+
+        messages = self.chat_history.messages
         if not messages:
             return []
-        
+
         # Return last N pairs based on window size
         max_messages = self.memory_window_size * 2
         return messages[-max_messages:] if len(messages) > max_messages else messages
-    
+
     def get_memory_stats(self) -> Dict[str, Any]:
         """Get current memory statistics.
-        
+
         Returns:
             Dict with memory status, window size, and message count
         """
-        message_count = len(self.memory.chat_memory.messages) if self.memory.chat_memory.messages else 0
+        message_count = len(self.chat_history.messages) if self.chat_history.messages else 0
         return {
             "enabled": self.memory_enabled,
             "window_size": self.memory_window_size,
             "current_messages": message_count,
             "conversation_pairs": message_count // 2,
-            "at_capacity": message_count >= (self.memory_window_size * 2)
+            "at_capacity": message_count >= (self.memory_window_size * 2),
         }
 
 

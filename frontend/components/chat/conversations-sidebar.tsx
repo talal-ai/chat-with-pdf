@@ -3,8 +3,16 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { MessageSquare, Trash2, Plus, X, Edit2, Check } from 'lucide-react'
+import { MessageSquare, Trash2, Plus, X, Edit2, Check, AlertTriangle } from 'lucide-react'
 import axios from 'axios'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 
 interface Conversation {
   id: number
@@ -34,6 +42,9 @@ export function ConversationsSidebar({
   const [loading, setLoading] = useState(true)
   const [editingId, setEditingId] = useState<number | null>(null)
   const [editTitle, setEditTitle] = useState('')
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
+  const [conversationToDelete, setConversationToDelete] = useState<number | null>(null)
+  const [deleting, setDeleting] = useState(false)
 
   useEffect(() => {
     fetchConversations()
@@ -52,20 +63,35 @@ export function ConversationsSidebar({
     }
   }
 
-  const handleDelete = async (id: number, e: React.MouseEvent) => {
+  const handleDeleteClick = (id: number, e: React.MouseEvent) => {
     e.stopPropagation()
-    if (!confirm('Are you sure you want to delete this conversation?')) return
+    setConversationToDelete(id)
+    setDeleteDialogOpen(true)
+  }
+
+  const handleDeleteConfirm = async () => {
+    if (!conversationToDelete) return
 
     try {
+      setDeleting(true)
       const baseUrl = apiUrl.replace('/chat', '')
-      await axios.delete(`${baseUrl}/conversations/${id}`)
-      setConversations(prev => prev.filter(c => c.id !== id))
-      if (currentConversationId === id) {
+      await axios.delete(`${baseUrl}/conversations/${conversationToDelete}`)
+      setConversations(prev => prev.filter(c => c.id !== conversationToDelete))
+      if (currentConversationId === conversationToDelete) {
         onNewConversation()
       }
+      setDeleteDialogOpen(false)
+      setConversationToDelete(null)
     } catch (error) {
       console.error('Failed to delete conversation:', error)
+    } finally {
+      setDeleting(false)
     }
+  }
+
+  const handleDeleteCancel = () => {
+    setDeleteDialogOpen(false)
+    setConversationToDelete(null)
   }
 
   const handleRename = async (id: number, e: React.MouseEvent) => {
@@ -225,7 +251,7 @@ export function ConversationsSidebar({
                           <Button
                             variant="ghost"
                             size="icon"
-                            onClick={(e) => handleDelete(conversation.id, e)}
+                            onClick={(e) => handleDeleteClick(conversation.id, e)}
                             className="h-5 w-5 rounded-lg hover:bg-red-500/20"
                           >
                             <Trash2 className="h-2.5 w-2.5 text-red-400" />
@@ -247,6 +273,49 @@ export function ConversationsSidebar({
           </p>
         </div>
       </div>
+
+      {/* Delete Confirmation Dialog */}
+      <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-red-600 dark:text-red-400">
+              <AlertTriangle className="h-5 w-5" />
+              Delete Conversation
+            </DialogTitle>
+            <DialogDescription className="pt-2">
+              Are you sure you want to delete this conversation? This action cannot be undone and all messages will be permanently lost.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button
+              variant="outline"
+              onClick={handleDeleteCancel}
+              disabled={deleting}
+              className="sm:mr-2"
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={handleDeleteConfirm}
+              disabled={deleting}
+              className="gap-2"
+            >
+              {deleting ? (
+                <>
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-background border-t-transparent" />
+                  Deleting...
+                </>
+              ) : (
+                <>
+                  <Trash2 className="h-4 w-4" />
+                  Delete Conversation
+                </>
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   )
 }

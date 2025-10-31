@@ -1,0 +1,15 @@
+[Unit]
+Description=AAOIFI Chatbot FastAPI Backend
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/backend
+Environment="PATH=/var/www/backend/.venv/bin"
+ExecStart=/var/www/backend/.venv/bin/gunicorn app.main:app --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:10000 --timeout 120
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -32,6 +32,9 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
   const [memoryStats, setMemoryStats] = useState<MemoryStats | null>(null)
   const [memoryLoading, setMemoryLoading] = useState(false)
   const [memoryError, setMemoryError] = useState<string | null>(null)
+  
+  // Clear memory confirmation dialog state
+  const [clearMemoryDialogOpen, setClearMemoryDialogOpen] = useState(false)
 
   // Fetch memory stats on dialog open
   useEffect(() => {
@@ -72,11 +75,11 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
     }
   }
 
-  const clearMemory = async () => {
-    if (!confirm('Are you sure you want to clear all conversation memory? This cannot be undone.')) {
-      return
-    }
-    
+  const handleClearMemoryClick = () => {
+    setClearMemoryDialogOpen(true)
+  }
+
+  const handleClearMemoryConfirm = async () => {
     setMemoryLoading(true)
     setMemoryError(null)
     try {
@@ -84,6 +87,7 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
       await axios.post(`${baseUrl}/memory/clear`)
       await fetchMemoryStats()
       setMemoryError(null)
+      setClearMemoryDialogOpen(false)
     } catch (error) {
       console.error('Failed to clear memory:', error)
       setMemoryError('Failed to clear memory')
@@ -92,14 +96,22 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
     }
   }
 
+  const handleClearMemoryCancel = () => {
+    setClearMemoryDialogOpen(false)
+  }
+
   const handleSave = () => {
     onApiUrlChange(localApiUrl)
     setSaved(true)
     setTimeout(() => setSaved(false), 2000)
   }
 
+  const DEFAULT_RESET_URL = process.env.NEXT_PUBLIC_API_URL 
+    ? `${process.env.NEXT_PUBLIC_API_URL}/chat`
+    : 'http://localhost:8000/api/v1/chat'
+
   const handleReset = () => {
-    setLocalApiUrl('http://localhost:8000/api/v1/chat')
+    setLocalApiUrl(DEFAULT_RESET_URL)
   }
 
   return (
@@ -109,7 +121,7 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
           <Settings className="h-4 w-4" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[650px] max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Settings className="h-5 w-5" />
@@ -120,18 +132,18 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
           </DialogDescription>
         </DialogHeader>
         
-        <div className="space-y-6">
+        <div className="space-y-4">
           {/* API Configuration */}
           <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">API Configuration</CardTitle>
-              <CardDescription>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">API Configuration</CardTitle>
+              <CardDescription className="text-xs">
                 Configure the backend API endpoint
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <label htmlFor="api-url" className="text-sm font-medium">
+            <CardContent className="space-y-3">
+              <div className="space-y-1.5">
+                <label htmlFor="api-url" className="text-xs font-medium">
                   API Endpoint
                 </label>
                 <Input
@@ -139,8 +151,9 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
                   value={localApiUrl}
                   onChange={(e) => setLocalApiUrl(e.target.value)}
                   placeholder="http://localhost:8000/api/v1/chat"
+                  className="h-9 text-sm"
                 />
-                <p className="text-xs text-muted-foreground">
+                <p className="text-[10px] text-muted-foreground">
                   Enter the full URL to your backend API
                 </p>
               </div>
@@ -151,8 +164,9 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
                     variant="outline"
                     size="sm"
                     onClick={handleReset}
+                    className="h-8 text-xs"
                   >
-                    <RotateCcw className="h-4 w-4 mr-1" />
+                    <RotateCcw className="h-3 w-3 mr-1" />
                     Reset
                   </Button>
                 </div>
@@ -160,15 +174,16 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
                   onClick={handleSave}
                   disabled={!localApiUrl.trim()}
                   size="sm"
+                  className="h-8 text-xs"
                 >
                   {saved ? (
                     <>
-                      <CheckCircle className="h-4 w-4 mr-1" />
+                      <CheckCircle className="h-3 w-3 mr-1" />
                       Saved
                     </>
                   ) : (
                     <>
-                      <Save className="h-4 w-4 mr-1" />
+                      <Save className="h-3 w-3 mr-1" />
                       Save
                     </>
                   )}
@@ -179,14 +194,14 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
 
           {/* Status */}
           <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Connection Status</CardTitle>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">Connection Status</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="flex items-center gap-2">
+            <CardContent className="py-3">
+              <div className="flex items-center gap-2 flex-wrap">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm">Connected to API</span>
-                <Badge variant="outline" className="text-xs">
+                <span className="text-xs">Connected to API</span>
+                <Badge variant="outline" className="text-[10px] max-w-[250px] truncate">
                   {apiUrl}
                 </Badge>
               </div>
@@ -195,16 +210,16 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
 
           {/* Memory Control */}
           <Card>
-            <CardHeader>
-              <CardTitle className="text-lg flex items-center gap-2">
-                <Brain className="h-5 w-5" />
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Brain className="h-4 w-4" />
                 Conversation Memory
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-xs">
                 Control how the AI remembers context from your conversation
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3">
               {memoryError && (
                 <div className="flex items-center gap-2 text-sm text-destructive bg-destructive/10 p-2 rounded">
                   <AlertCircle className="h-4 w-4" />
@@ -214,10 +229,10 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
               
               {/* Memory Toggle */}
               <div className="flex items-center justify-between">
-                <div className="space-y-1">
-                  <label className="text-sm font-medium">Enable Memory</label>
-                  <p className="text-xs text-muted-foreground">
-                    Remember conversation context for better responses
+                <div className="space-y-0.5">
+                  <label className="text-xs font-medium">Enable Memory</label>
+                  <p className="text-[10px] text-muted-foreground">
+                    Remember conversation context
                   </p>
                 </div>
                 <Button
@@ -226,15 +241,16 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
                   onClick={() => {
                     setMemoryEnabled(!memoryEnabled)
                   }}
+                  className="h-8 text-xs"
                 >
                   {memoryEnabled ? "Enabled" : "Disabled"}
                 </Button>
               </div>
 
               {/* Window Size Selector */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Memory Window Size</label>
-                <p className="text-xs text-muted-foreground mb-2">
+              <div className="space-y-1.5">
+                <label className="text-xs font-medium">Memory Window Size</label>
+                <p className="text-[10px] text-muted-foreground">
                   Number of Q&A pairs to remember
                 </p>
                 <div className="grid grid-cols-4 gap-2">
@@ -245,6 +261,7 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
                       size="sm"
                       onClick={() => setMemoryWindowSize(size)}
                       disabled={!memoryEnabled}
+                      className="h-8 text-xs"
                     >
                       {size}
                     </Button>
@@ -271,26 +288,28 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
               )}
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-between pt-2">
+              <div className="flex items-center justify-between pt-1">
                 <Button
                   variant="destructive"
                   size="sm"
-                  onClick={clearMemory}
+                  onClick={handleClearMemoryClick}
                   disabled={memoryLoading || !memoryStats || memoryStats.current_messages === 0}
+                  className="h-8 text-xs"
                 >
-                  <Trash2 className="h-4 w-4 mr-1" />
+                  <Trash2 className="h-3 w-3 mr-1" />
                   Clear Memory
                 </Button>
                 <Button
                   onClick={updateMemorySettings}
                   disabled={memoryLoading}
                   size="sm"
+                  className="h-8 text-xs"
                 >
                   {memoryLoading ? (
                     "Updating..."
                   ) : (
                     <>
-                      <Save className="h-4 w-4 mr-1" />
+                      <Save className="h-3 w-3 mr-1" />
                       Apply
                     </>
                   )}
@@ -301,11 +320,11 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
 
           {/* Features */}
           <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Features</CardTitle>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">Features</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
+            <CardContent className="py-3">
+              <div className="grid grid-cols-2 gap-2">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   <span className="text-sm">RAG-powered responses</span>
@@ -339,6 +358,54 @@ export function SettingsDialog({ apiUrl, onApiUrlChange }: SettingsDialogProps) 
           </Card>
         </div>
       </DialogContent>
+
+      {/* Clear Memory Confirmation Dialog */}
+      <Dialog open={clearMemoryDialogOpen} onOpenChange={setClearMemoryDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-amber-600 dark:text-amber-400">
+              <AlertCircle className="h-5 w-5" />
+              Clear Conversation Memory
+            </DialogTitle>
+            <DialogDescription className="pt-2">
+              Are you sure you want to clear all conversation memory? This will remove the context from previous messages and cannot be undone.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col gap-2 py-2">
+            <div className="flex items-start gap-2 text-sm text-muted-foreground">
+              <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+              <p>The AI will forget all previous context and start fresh.</p>
+            </div>
+          </div>
+          <div className="flex justify-end gap-2">
+            <Button
+              variant="outline"
+              onClick={handleClearMemoryCancel}
+              disabled={memoryLoading}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={handleClearMemoryConfirm}
+              disabled={memoryLoading}
+              className="gap-2"
+            >
+              {memoryLoading ? (
+                <>
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-background border-t-transparent" />
+                  Clearing...
+                </>
+              ) : (
+                <>
+                  <Trash2 className="h-4 w-4" />
+                  Clear Memory
+                </>
+              )}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Dialog>
   )
 }

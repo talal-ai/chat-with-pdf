@@ -28,7 +28,11 @@ interface ChatInterfaceProps {
   apiUrl?: string
 }
 
-export function ChatInterface({ apiUrl = 'http://localhost:8000/api/v1/chat' }: ChatInterfaceProps) {
+const DEFAULT_API_URL = process.env.NEXT_PUBLIC_API_URL 
+  ? `${process.env.NEXT_PUBLIC_API_URL}/chat`
+  : 'http://localhost:8000/api/v1/chat'
+
+export function ChatInterface({ apiUrl = DEFAULT_API_URL }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)

@@ -1,4 +1,5 @@
 """Conversation management API endpoints."""
+
 from fastapi import APIRouter, HTTPException, Query
 from typing import List, Optional
 from pydantic import BaseModel, Field
@@ -11,12 +12,14 @@ router = APIRouter()
 
 class CreateConversationRequest(BaseModel):
     """Request model for creating a conversation."""
+
     title: str = Field(..., min_length=1, max_length=200, description="Conversation title")
     metadata: Optional[dict] = Field(default=None, description="Optional metadata")
 
 
 class CreateConversationResponse(BaseModel):
     """Response model for creating a conversation."""
+
     conversation_id: int
     title: str
     created_at: str
@@ -24,6 +27,7 @@ class CreateConversationResponse(BaseModel):
 
 class ConversationSummary(BaseModel):
     """Summary of a conversation."""
+
     id: int
     title: str
     created_at: str
@@ -34,6 +38,7 @@ class ConversationSummary(BaseModel):
 
 class Message(BaseModel):
     """Message model."""
+
     id: int
     role: str
     content: str
@@ -43,6 +48,7 @@ class Message(BaseModel):
 
 class ConversationDetail(BaseModel):
     """Detailed conversation with messages."""
+
     id: int
     title: str
     created_at: str
@@ -54,6 +60,7 @@ class ConversationDetail(BaseModel):
 
 class UpdateTitleRequest(BaseModel):
     """Request to update conversation title."""
+
     title: str = Field(..., min_length=1, max_length=200)
 
 
@@ -62,17 +69,16 @@ async def create_conversation(request: CreateConversationRequest):
     """Create a new conversation."""
     try:
         conversation_id = conversation_service.create_conversation(
-            title=request.title,
-            metadata=request.metadata
+            title=request.title, metadata=request.metadata
         )
-        
+
         # Get the created conversation to return full details
         conversation = conversation_service.get_conversation(conversation_id)
-        
+
         return CreateConversationResponse(
             conversation_id=conversation_id,
             title=conversation["title"],
-            created_at=conversation["created_at"]
+            created_at=conversation["created_at"],
         )
     except Exception as e:
         logger.error("Failed to create conversation", error=str(e))
@@ -82,7 +88,7 @@ async def create_conversation(request: CreateConversationRequest):
 @router.get("/conversations", response_model=List[ConversationSummary])
 async def list_conversations(
     limit: int = Query(50, ge=1, le=100, description="Maximum number of conversations to return"),
-    offset: int = Query(0, ge=0, description="Number of conversations to skip")
+    offset: int = Query(0, ge=0, description="Number of conversations to skip"),
 ):
     """List all conversations ordered by most recent."""
     try:
@@ -98,10 +104,10 @@ async def get_conversation(conversation_id: int):
     """Get a specific conversation with all messages."""
     try:
         conversation = conversation_service.get_conversation(conversation_id)
-        
+
         if not conversation:
             raise HTTPException(status_code=404, detail=f"Conversation {conversation_id} not found")
-        
+
         return ConversationDetail(**conversation)
     except HTTPException:
         raise
@@ -115,10 +121,10 @@ async def update_conversation_title(conversation_id: int, request: UpdateTitleRe
     """Update the title of a conversation."""
     try:
         updated = conversation_service.update_conversation_title(conversation_id, request.title)
-        
+
         if not updated:
             raise HTTPException(status_code=404, detail=f"Conversation {conversation_id} not found")
-        
+
         return {"message": "Title updated successfully", "conversation_id": conversation_id}
     except HTTPException:
         raise
@@ -132,10 +138,10 @@ async def delete_conversation(conversation_id: int):
     """Delete a conversation and all its messages."""
     try:
         deleted = conversation_service.delete_conversation(conversation_id)
-        
+
         if not deleted:
             raise HTTPException(status_code=404, detail=f"Conversation {conversation_id} not found")
-        
+
         return {"message": "Conversation deleted successfully", "conversation_id": conversation_id}
     except HTTPException:
         raise

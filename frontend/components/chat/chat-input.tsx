@@ -13,7 +13,9 @@ interface ChatInputProps {
   apiUrl?: string
 }
 
-export function ChatInput({ onSendMessage, loading, disabled, apiUrl = 'http://localhost:8000/api/v1' }: ChatInputProps) {
+const DEFAULT_API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'
+
+export function ChatInput({ onSendMessage, loading, disabled, apiUrl = DEFAULT_API_URL }: ChatInputProps) {
   const [input, setInput] = useState('')
   const [selectedFiles, setSelectedFiles] = useState<File[]>([])
   const [uploading, setUploading] = useState(false)
@@ -34,7 +36,9 @@ export function ChatInput({ onSendMessage, loading, disabled, apiUrl = 'http://l
           formData.append('files', file)
         })
 
-        const response = await fetch(`${apiUrl}/upload/multiple`, {
+        // Extract base URL (remove /chat if present)
+        const baseUrl = apiUrl.replace(/\/chat$/, '')
+        const response = await fetch(`${baseUrl}/upload/multiple`, {
           method: 'POST',
           body: formData,
         })

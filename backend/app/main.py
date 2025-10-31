@@ -1,5 +1,8 @@
 """Main FastAPI application."""
-from fastapi import FastAPI
+
+from contextlib import asynccontextmanager
+from typing import Any
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from slowapi import Limiter, _rate_limit_exceeded_handler
@@ -15,14 +18,28 @@ logger = structlog.get_logger()
 
 limiter = Limiter(key_func=get_remote_address)
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifespan context manager for startup and shutdown events."""
+    # Startup: Just log, don't block - services will initialize on first request
+    logger.info("🚀 Application started - services will initialize on first request")
+    
+    yield  # Application runs here
+
+    # Shutdown: Clean up resources
+    logger.info("👋 Shutting down application...")
+
+
 app = FastAPI(
     title=settings.api_title,
     version=settings.api_version,
-    description="RAG chatbot for AAOIFI Sharia Standards"
+    description="RAG chatbot for AAOIFI Sharia Standards",
+    lifespan=lifespan,
 )
 
 app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)  # type: ignore[arg-type]
 
 app.add_middleware(
     CORSMiddleware,
@@ -40,20 +57,18 @@ app.include_router(upload.router, prefix="/api/v1", tags=["upload"])
 
 
 @app.exception_handler(Exception)
-async def global_exception_handler(request, exc):
+async def global_exception_handler(request: Request, exc: Exception) -> JSONResponse:
+    """Handle all unhandled exceptions."""
     logger.error("Unhandled exception", error=str(exc))
     return JSONResponse(status_code=500, content={"detail": "Internal server error"})
 
 
 @app.get("/")
 async def root():
-    return {
-        "message": "AAOIFI RAG Chatbot API",
-        "version": settings.api_version,
-        "docs": "/docs"
-    }
+    return {"message": "AAOIFI RAG Chatbot API", "version": settings.api_version, "docs": "/docs"}
 
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=settings.debug)
