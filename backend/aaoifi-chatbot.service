@@ -7,7 +7,7 @@ Type=simple
 User=root
 WorkingDirectory=/var/www/backend
 Environment="PATH=/var/www/backend/.venv/bin"
-ExecStart=/var/www/backend/.venv/bin/gunicorn app.main:app --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:10000 --timeout 120
+ExecStart=/var/www/backend/.venv/bin/gunicorn app.main:app --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5015 --timeout 120
 Restart=always
 RestartSec=10
 

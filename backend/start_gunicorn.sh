@@ -20,11 +20,11 @@ if [ ! -f ".env" ]; then
 fi
 
 # Start Gunicorn with Uvicorn workers
-echo "✅ Starting server on 0.0.0.0:10000 with Gunicorn..."
+echo "✅ Starting server on 0.0.0.0:5015 with Gunicorn..."
 gunicorn app.main:app \
     --workers 2 \
     --worker-class uvicorn.workers.UvicornWorker \
-    --bind 0.0.0.0:10000 \
+    --bind 0.0.0.0:5015 \
     --timeout 120 \
     --access-logfile - \
     --error-logfile -

@@ -20,5 +20,5 @@ if [ ! -f ".env" ]; then
 fi
 
 # Start Uvicorn
-echo "✅ Starting server on 0.0.0.0:10000..."
-uvicorn app.main:app --host 0.0.0.0 --port 10000 --workers 2
+echo "✅ Starting server on 0.0.0.0:5015..."
+uvicorn app.main:app --host 0.0.0.0 --port 5015 --workers 2

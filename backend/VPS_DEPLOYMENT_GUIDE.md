@@ -88,9 +88,9 @@ chmod +x start_production.sh
 ./start_production.sh
 ```
 
-Your API should now be running at: `http://5.189.174.219:10000`
+Your API should now be running at: `http://5.189.174.219:5015`
 
-Test it: `http://5.189.174.219:10000/api/v1/health`
+Test it: `http://5.189.174.219:5015/api/v1/health`
 
 Press `Ctrl+C` to stop.
 
@@ -131,24 +131,24 @@ journalctl -u aaoifi-chatbot -f
 
 ## 🔐 Firewall Configuration
 
-Make sure port 10000 is open:
+Make sure port 5015 is open:
 
 ```bash
 # For UFW
-ufw allow 10000/tcp
+ufw allow 5015/tcp
 
 # For firewalld
-firewall-cmd --permanent --add-port=10000/tcp
+firewall-cmd --permanent --add-port=5015/tcp
 firewall-cmd --reload
 
 # For iptables
-iptables -A INPUT -p tcp --dport 10000 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5015 -j ACCEPT
 ```
 
 ## 🌐 Access Your API
 
-- **Health Check**: `http://5.189.174.219:10000/api/v1/health`
-- **API Base URL**: `http://5.189.174.219:10000/api/v1`
+- **Health Check**: `http://5.189.174.219:5015/api/v1/health`
+- **API Base URL**: `http://5.189.174.219:5015/api/v1`
 
 ## 🔄 Updating Your Backend
 
@@ -202,8 +202,8 @@ systemctl status aaoifi-chatbot
 
 ### Port Already in Use
 ```bash
-# Find process using port 10000
-lsof -i :10000
+# Find process using port 5015
+lsof -i :5015
 # Kill the process
 kill -9 <PID>
 ```
@@ -234,7 +234,7 @@ After backend is running on your VPS:
 
 1. Update frontend `.env.production`:
    ```
-   NEXT_PUBLIC_API_URL=http://5.189.174.219:10000/api/v1
+   NEXT_PUBLIC_API_URL=http://5.189.174.219:5015/api/v1
    ```
 
 2. Deploy frontend to Vercel with this backend URL
@@ -244,7 +244,7 @@ After backend is running on your VPS:
 ## 📝 Summary
 
 Your backend is now deployed at:
-- **API URL**: `http://5.189.174.219:10000/api/v1`
-- **Health Check**: `http://5.189.174.219:10000/api/v1/health`
+- **API URL**: `http://5.189.174.219:5015/api/v1`
+- **Health Check**: `http://5.189.174.219:5015/api/v1/health`
 - **Logs**: `journalctl -u aaoifi-chatbot -f`
 - **Auto-starts**: On server reboot via systemd service
