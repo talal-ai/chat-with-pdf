@@ -325,42 +325,67 @@
 /* Custom prose styling for markdown */
 .prose {
   @apply text-foreground;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
   @apply text-foreground font-bold;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .prose strong {
   @apply font-bold text-foreground;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .prose em {
   @apply italic text-foreground;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .prose code {
   @apply bg-muted px-1 py-0.5 rounded text-xs font-mono text-foreground;
+  word-break: break-all;
 }
 
 .prose blockquote {
   @apply border-l-4 border-border pl-4 italic text-muted-foreground;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .prose ul, .prose ol {
   @apply text-foreground;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .prose li {
   @apply text-foreground;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .prose a {
   @apply text-primary hover:text-primary/80 underline;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .prose hr {
   @apply border-border;
+}
+
+.prose p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Light-mode utility overrides to increase contrast and replace 'white' borders */
@@ -379,3 +404,34 @@
 /* Improve contrast for elements that used extremely light borders/text in light mode */
 .light .text-muted-foreground { color: rgba(17,24,39,0.6) !important; }
 .light .shadow-black\/20 { box-shadow: 0 8px 32px 0 rgba(0,0,0,0.05) !important; }
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  /* Ensure minimum touch targets */
+  button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve text readability on small screens */
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* Better spacing for mobile */
+  .glass, .glass-light, .glass-dark {
+    backdrop-filter: blur(8px);
+  }
+  
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  /* Improve input focus on mobile */
+  input:focus, textarea:focus, select:focus {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}

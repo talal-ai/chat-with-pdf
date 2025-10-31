@@ -50,7 +50,7 @@ const toneOptions = [
 
 export function ToneSelector({ selectedTone, onToneChange }: ToneSelectorProps) {
   return (
-    <div className="flex flex-wrap gap-1.5 mb-2">
+    <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 justify-center md:justify-start">
       {toneOptions.map((option) => {
         const Icon = option.icon;
         const isSelected = selectedTone === option.value;
@@ -60,8 +60,9 @@ export function ToneSelector({ selectedTone, onToneChange }: ToneSelectorProps) 
             key={option.value}
             onClick={() => onToneChange(option.value)}
             className={`
-              group relative flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-medium
-              transition-all duration-200 transform hover:scale-105 glass-light border
+              group relative flex items-center gap-1 md:gap-1.5 px-2 md:px-2.5 py-1 md:py-1 rounded-lg md:rounded-xl text-xs font-medium
+              transition-all duration-200 transform hover:scale-105 active:scale-95 glass-light border
+              min-h-[32px] md:min-h-[36px] touch-manipulation
               ${
                 isSelected
                   ? "border-blue-400/50 bg-blue-500/20 text-blue-300 dark:text-blue-300 light:text-blue-700 light:bg-blue-200/50 shadow-lg shadow-blue-500/20"
@@ -70,11 +71,11 @@ export function ToneSelector({ selectedTone, onToneChange }: ToneSelectorProps) 
             `}
             title={option.description}
           >
-            <Icon className="w-3 h-3" />
-            <span className="font-poppins">{option.label}</span>
+            <Icon className="w-3 h-3 md:w-3 md:h-3 flex-shrink-0" />
+            <span className="font-poppins truncate">{option.label}</span>
             
-            {/* Tooltip */}
-            <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 
+            {/* Tooltip - hidden on mobile, shown on hover for desktop */}
+            <div className="hidden md:block absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 
                           opacity-0 group-hover:opacity-100 transition-opacity duration-200
                           pointer-events-none z-50">
               <div className="glass-dark text-foreground text-[10px] rounded-lg py-1.5 px-2.5 whitespace-nowrap shadow-xl border border-white/10 backdrop-blur-xl font-poppins">

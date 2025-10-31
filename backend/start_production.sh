@@ -7,7 +7,7 @@ set -e
 echo "🚀 Starting FastAPI backend in production mode..."
 
 # Navigate to backend directory
-cd /var/www/backend
+cd /var/www/aaoifi-chatbot-backend
 
 # Activate virtual environment
 source .venv/bin/activate

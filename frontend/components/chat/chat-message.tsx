@@ -92,19 +92,17 @@ export function ChatMessage({ role, content, sources, timestamp, isStreaming = f
   }
 
   return (
-    <div className={`flex ${role === 'user' ? 'justify-end' : 'justify-start'} mb-4 ${
-      role === 'user' ? 'animate-slide-in-left' : 'animate-slide-in-right'
-    }`}>
-      <div className={`max-w-3xl ${role === 'user' ? 'order-2' : 'order-1'}`}>
+    <div className={`flex ${role === 'user' ? 'justify-end' : 'justify-start'} mb-3 md:mb-4 ${role === 'user' ? 'animate-slide-in-left' : 'animate-slide-in-right'} w-full`}>
+      <div className={`max-w-[90%] md:max-w-3xl ${role === 'user' ? 'order-2' : 'order-1'}`}>
         <Card className={`${
           role === 'user' 
             ? 'glass-light bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-blue-400/30 shadow-lg shadow-blue-500/10 dark:from-blue-500/20 dark:to-purple-500/20 light:from-blue-100 light:to-purple-100 light:border-blue-300' 
             : 'glass-dark border-white/10 shadow-xl shadow-black/20 dark:border-white/10 light:border-black/20 light:bg-white/90'
         } rounded-2xl overflow-hidden backdrop-blur-xl transform hover:scale-[1.01] transition-all duration-200`}>
-          <CardContent className="p-4">
+          <CardContent className="p-3 md:p-4">
             <div className="flex items-start justify-between gap-2">
-              <div className="flex-1">
-                <div className="prose prose-sm max-w-none dark:prose-invert">
+              <div className="flex-1 min-w-0">
+                <div className="prose prose-sm max-w-none dark:prose-invert break-words overflow-wrap-anywhere">
                   {role === 'assistant' && isStreaming && !streamingComplete ? (
                     <StreamingText 
                       text={content} 
@@ -115,18 +113,18 @@ export function ChatMessage({ role, content, sources, timestamp, isStreaming = f
                       <ReactMarkdown 
                     remarkPlugins={[remarkGfm]}
                     components={{
-                      h1: ({ children }) => <h1 className="text-lg font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-montserrat">{children}</h1>,
-                      h2: ({ children }) => <h2 className="text-base font-bold mb-1.5 text-foreground font-montserrat">{children}</h2>,
-                      h3: ({ children }) => <h3 className="text-sm font-bold mb-1.5 text-foreground font-montserrat">{children}</h3>,
-                      p: ({ children }) => <p className="mb-2 text-sm leading-relaxed text-foreground/90 font-poppins">{children}</p>,
-                      ul: ({ children }) => <ul className="mb-2 ml-4 list-disc text-sm text-foreground/90 space-y-0.5 font-poppins">{children}</ul>,
-                      ol: ({ children }) => <ol className="mb-2 ml-4 list-decimal text-sm text-foreground/90 space-y-0.5 font-poppins">{children}</ol>,
-                      li: ({ children }) => <li className="mb-0.5 text-sm leading-relaxed text-foreground/90 font-poppins">{children}</li>,
-                      strong: ({ children }) => <strong className="font-bold bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">{children}</strong>,
-                      em: ({ children }) => <em className="italic text-foreground/80">{children}</em>,
-                      code: ({ children }) => <code className="glass-light px-1.5 py-0.5 rounded-lg text-xs font-mono text-blue-300 border border-blue-400/20">{children}</code>,
-                      blockquote: ({ children }) => <blockquote className="border-l-4 border-blue-500/50 pl-3 italic text-muted-foreground mb-2 glass-light rounded-r-lg py-1.5">{children}</blockquote>,
-                      hr: () => <hr className="my-3 border-white/20" />,
+                      h1: ({ children }) => <h1 className="text-base md:text-lg font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-montserrat break-words">{children}</h1>,
+                      h2: ({ children }) => <h2 className="text-sm md:text-base font-bold mb-1.5 text-foreground font-montserrat break-words">{children}</h2>,
+                      h3: ({ children }) => <h3 className="text-xs md:text-sm font-bold mb-1.5 text-foreground font-montserrat break-words">{children}</h3>,
+                      p: ({ children }) => <p className="mb-2 text-xs md:text-sm leading-relaxed text-foreground/90 font-poppins break-words">{children}</p>,
+                      ul: ({ children }) => <ul className="mb-2 ml-3 md:ml-4 list-disc text-xs md:text-sm text-foreground/90 space-y-0.5 font-poppins break-words">{children}</ul>,
+                      ol: ({ children }) => <ol className="mb-2 ml-3 md:ml-4 list-decimal text-xs md:text-sm text-foreground/90 space-y-0.5 font-poppins break-words">{children}</ol>,
+                      li: ({ children }) => <li className="mb-0.5 text-xs md:text-sm leading-relaxed text-foreground/90 font-poppins break-words">{children}</li>,
+                      strong: ({ children }) => <strong className="font-bold bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent break-words">{children}</strong>,
+                      em: ({ children }) => <em className="italic text-foreground/80 break-words">{children}</em>,
+                      code: ({ children }) => <code className="glass-light px-1 md:px-1.5 py-0.5 rounded-lg text-xs font-mono text-blue-300 border border-blue-400/20 break-all">{children}</code>,
+                      blockquote: ({ children }) => <blockquote className="border-l-4 border-blue-500/50 pl-2 md:pl-3 italic text-muted-foreground mb-2 glass-light rounded-r-lg py-1.5 break-words">{children}</blockquote>,
+                      hr: () => <hr className="my-2 md:my-3 border-white/20" />,
                     }}
                   >
                     {content}
@@ -145,21 +143,21 @@ export function ChatMessage({ role, content, sources, timestamp, isStreaming = f
                   variant="ghost"
                   size="icon"
                   onClick={copyToClipboard}
-                  className="h-8 w-8 rounded-full glass-light hover:glass border-white/10 opacity-70 hover:opacity-100 transition-all duration-200"
+                  className="h-6 w-6 md:h-8 md:w-8 rounded-full glass-light hover:glass border-white/10 opacity-70 hover:opacity-100 transition-all duration-200 shrink-0"
                   title={copied ? 'Copied!' : 'Copy message'}
                 >
-                  <Copy className={`h-3.5 w-3.5 ${copied ? 'text-green-400' : ''}`} />
+                  <Copy className={`h-3 w-3 md:h-3.5 md:w-3.5 ${copied ? 'text-green-400' : ''}`} />
                 </Button>
               )}
             </div>
             
             {sources && sources.length > 0 && streamingComplete && (
-              <div className="mt-4 pt-4 border-t border-white/10">
+              <div className="mt-3 md:mt-4 pt-3 md:pt-4 border-t border-white/10">
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setShowSources(!showSources)}
-                  className="h-7 px-2.5 text-xs rounded-full glass-light hover:glass border-white/10 transition-all duration-200 font-poppins"
+                  className="h-6 md:h-7 px-2 md:px-2.5 text-xs rounded-full glass-light hover:glass border-white/10 transition-all duration-200 font-poppins touch-manipulation"
                 >
                   {showSources ? (
                     <>
@@ -175,9 +173,9 @@ export function ChatMessage({ role, content, sources, timestamp, isStreaming = f
                 </Button>
                 
                 {showSources && (
-                  <div className="mt-3 space-y-2 animate-fade-in">
+                  <div className="mt-2 md:mt-3 space-y-2 animate-fade-in">
                     {/* Relevance explanation */}
-                    <div className="text-[10px] text-blue-300/80 glass-light rounded-xl p-2 border border-blue-400/20 font-poppins">
+                    <div className="text-[10px] text-blue-300/80 glass-light rounded-lg md:rounded-xl p-2 border border-blue-400/20 font-poppins">
                       <strong className="text-blue-200">Sources ranked by relevance:</strong> Higher scores indicate stronger semantic similarity.
                     </div>
                     
@@ -187,36 +185,36 @@ export function ChatMessage({ role, content, sources, timestamp, isStreaming = f
                       return (
                         <div 
                           key={index} 
-                          className="glass-dark rounded-xl p-3 hover:glass-light transition-all duration-200 border border-white/10 transform hover:scale-[1.01] animate-scale-in"
+                          className="glass-dark rounded-lg md:rounded-xl p-2 md:p-3 hover:glass-light transition-all duration-200 border border-white/10 transform hover:scale-[1.01] animate-scale-in touch-manipulation"
                           style={{ animationDelay: `${index * 0.05}s` }}
                         >
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              <Badge variant="outline" className="text-[10px] font-medium glass-light border-blue-400/30 rounded-full px-1.5 py-0.5 font-poppins">
+                          <div className="flex items-start md:items-center justify-between mb-2 gap-2">
+                            <div className="flex items-center gap-1 md:gap-1.5 flex-wrap flex-1 min-w-0">
+                              <Badge variant="outline" className="text-[10px] font-medium glass-light border-blue-400/30 rounded-full px-1 md:px-1.5 py-0.5 font-poppins shrink-0">
                                 #{index + 1}
                               </Badge>
-                              <Badge variant="outline" className="text-[10px] glass-light border-purple-400/30 rounded-full px-1.5 py-0.5 font-poppins">
+                              <Badge variant="outline" className="text-[10px] glass-light border-purple-400/30 rounded-full px-1 md:px-1.5 py-0.5 font-poppins shrink-0">
                                 Page {source.page}
                               </Badge>
                               {source.score !== undefined && source.score > 0 && (
                                 <>
-                                  <Badge variant="secondary" className="text-[10px] glass-light border-green-400/30 rounded-full px-1.5 py-0.5 font-poppins">
+                                  <Badge variant="secondary" className="text-[10px] glass-light border-green-400/30 rounded-full px-1 md:px-1.5 py-0.5 font-poppins shrink-0">
                                     {(source.score * 100).toFixed(0)}% match
                                   </Badge>
-                                  <div className="flex items-center gap-1">
+                                  <div className="flex items-center gap-1 shrink-0">
                                     <div className={`h-1.5 w-1.5 rounded-full ${relevance.color} animate-pulse-slow`} />
-                                    <span className="text-[10px] font-medium text-foreground/70 font-poppins">
+                                    <span className="text-[10px] font-medium text-foreground/70 font-poppins truncate">
                                       {relevance.tier}
                                     </span>
                                   </div>
                                 </>
                               )}
                             </div>
-                            <div className="flex items-center gap-0.5">
+                            <div className="flex items-center gap-0.5 shrink-0">
                               <Button
                                 variant="ghost"
                                 size="icon"
-                                className="h-6 w-6 rounded-lg glass-light hover:glass border-white/10 transition-all duration-200"
+                                className="h-5 w-5 md:h-6 md:w-6 rounded-lg glass-light hover:glass border-white/10 transition-all duration-200"
                                 onClick={() => setSelectedSource(source)}
                                 title={relevance.description}
                               >
@@ -225,7 +223,7 @@ export function ChatMessage({ role, content, sources, timestamp, isStreaming = f
                               <Button
                                 variant="ghost"
                                 size="icon"
-                                className="h-6 w-6 rounded-lg glass-light hover:glass border-white/10 transition-all duration-200"
+                                className="h-5 w-5 md:h-6 md:w-6 rounded-lg glass-light hover:glass border-white/10 transition-all duration-200"
                                 onClick={() => window.open(`#page-${source.page}`, '_blank')}
                                 title="Open in PDF"
                               >
@@ -233,11 +231,11 @@ export function ChatMessage({ role, content, sources, timestamp, isStreaming = f
                               </Button>
                             </div>
                           </div>
-                          <p className="text-[11px] text-foreground/70 leading-relaxed line-clamp-3 font-poppins">
+                          <p className="text-[11px] text-foreground/70 leading-relaxed line-clamp-2 md:line-clamp-3 font-poppins">
                             {source.content}
                           </p>
                           {source.source_file && (
-                            <div className="text-[10px] text-blue-300/60 mt-1.5 italic font-poppins">
+                            <div className="text-[10px] text-blue-300/60 mt-1.5 italic font-poppins truncate">
                               {source.source_file}
                             </div>
                           )}

@@ -7,7 +7,7 @@ import structlog
 from pydantic import ValidationError
 
 try:
-    from json_repair import repair_json
+    from json_repair import repair_json  # type: ignore[reportMissingImports]
     JSON_REPAIR_AVAILABLE = True
 except ImportError:
     JSON_REPAIR_AVAILABLE = False

@@ -163,10 +163,10 @@ export function ChatInterface({ apiUrl = DEFAULT_API_URL }: ChatInterfaceProps) 
   }
 
   return (
-    <div className="flex h-screen bg-background relative overflow-hidden">
+    <div className="flex min-h-[100dvh] bg-background relative overflow-hidden">
       {/* Animated background orbs */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow pointer-events-none" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow pointer-events-none" style={{ animationDelay: '1s' }} />
+      <div className="hidden md:block absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow pointer-events-none" />
+      <div className="hidden md:block absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow pointer-events-none" style={{ animationDelay: '1s' }} />
 
       {/* Conversations Sidebar */}
       <ConversationsSidebar
@@ -179,30 +179,30 @@ export function ChatInterface({ apiUrl = DEFAULT_API_URL }: ChatInterfaceProps) 
       />
 
   {/* Main Chat Area */}
-  <div className="flex-1 flex flex-col relative z-10 md:ml-96">
+  <div className="flex-1 flex flex-col relative z-10 md:ml-[28rem] min-h-0">
         {/* Header */}
-        <div className="glass-dark border-b border-white/10 dark:border-white/10 light:border-black/10 backdrop-blur-xl">
-          <div className="flex items-center justify-between p-3">
-            <div className="flex items-center space-x-2">
+        <div className="glass-dark border-b border-white/10 dark:border-white/10 light:border-black/10 backdrop-blur-xl px-3 py-2 md:px-4 md:py-3">
+          <div className="flex items-center justify-between max-w-full">
+            <div className="flex items-center space-x-2 min-w-0 flex-1">
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setSidebarOpen(!sidebarOpen)}
                 title="Toggle conversations"
-                className="md:hidden rounded-full glass-light hover:glass border-white/10 transition-all duration-200 h-9 w-9"
+                className="md:hidden rounded-full glass-light hover:glass border-white/10 transition-all duration-200 h-8 w-8 shrink-0"
               >
                 <Menu className="h-4 w-4" />
               </Button>
-              <div>
-                <h1 className="text-base font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-montserrat">
+              <div className="min-w-0 flex-1">
+                <h1 className="text-sm md:text-base font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-montserrat truncate">
                   AAOIFI Standards Chatbot
                 </h1>
-                <p className="text-[10px] text-foreground/60 font-poppins">
+                <p className="text-[10px] md:text-xs text-foreground/60 font-poppins truncate">
                   {currentConversationId ? `Conversation #${String(currentConversationId).slice(0, 8)}` : 'Ask questions about Sharia Standards'}
                 </p>
               </div>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 md:space-x-2 shrink-0">
               <ThemeToggle />
               <Button
                 variant="outline"
@@ -210,9 +210,9 @@ export function ChatInterface({ apiUrl = DEFAULT_API_URL }: ChatInterfaceProps) 
                 onClick={exportConversation}
                 disabled={messages.length === 0}
                 title="Export conversation"
-                className="rounded-full glass-light hover:glass border-white/10 transition-all duration-200 h-9 w-9"
+                className="rounded-full glass-light hover:glass border-white/10 transition-all duration-200 h-8 w-8 md:h-9 md:w-9"
               >
-                <Download className="h-3.5 w-3.5" />
+                <Download className="h-3 w-3 md:h-3.5 md:w-3.5" />
               </Button>
               <Button
                 variant="outline"
@@ -220,9 +220,9 @@ export function ChatInterface({ apiUrl = DEFAULT_API_URL }: ChatInterfaceProps) 
                 onClick={clearConversation}
                 disabled={messages.length === 0}
                 title="Clear conversation"
-                className="rounded-full glass-light hover:glass border-white/10 transition-all duration-200 hover:border-red-500/30 h-9 w-9"
+                className="rounded-full glass-light hover:glass border-white/10 hover:border-red-500/30 h-8 w-8 md:h-9 md:w-9 transition-all duration-200"
               >
-                <Trash2 className="h-3.5 w-3.5" />
+                <Trash2 className="h-3 w-3 md:h-3.5 md:w-3.5" />
               </Button>
               <SettingsDialog
                 apiUrl={currentApiUrl}
@@ -233,9 +233,9 @@ export function ChatInterface({ apiUrl = DEFAULT_API_URL }: ChatInterfaceProps) 
         </div>
 
         {/* Messages Area */}
-        <div className="flex-1 overflow-hidden">
-          <ScrollArea ref={scrollAreaRef} className="h-full">
-            <div className="p-4 space-y-4">
+        <div className="flex-1 overflow-hidden min-w-0">
+          <ScrollArea ref={scrollAreaRef} className="h-full w-full">
+            <div className="p-3 md:p-4 space-y-3 md:space-y-4 w-full">
               {messages.length === 0 ? (
                 <WelcomeMessage onQuestionClick={sendMessage} />
               ) : (
@@ -262,7 +262,7 @@ export function ChatInterface({ apiUrl = DEFAULT_API_URL }: ChatInterfaceProps) 
               {loading && <TypingIndicator />}
               
               {error && (
-                <div className="flex justify-center animate-fade-in">
+                <div className="flex justify-center animate-fade-in px-3 md:px-0">
                   <Card className="glass-dark border-red-500/30 max-w-md rounded-2xl backdrop-blur-xl">
                     <div className="p-3 text-center">
                       <p className="text-xs text-red-300 font-poppins">{error}</p>
@@ -283,9 +283,9 @@ export function ChatInterface({ apiUrl = DEFAULT_API_URL }: ChatInterfaceProps) 
         </div>
 
         {/* Input Area */}
-        <div className="glass-dark border-t border-white/10 p-3 backdrop-blur-xl">
-          <ToneSelector 
-            selectedTone={selectedTone} 
+        <div className="glass-dark border-t border-white/10 p-2 md:p-3 backdrop-blur-xl">
+          <ToneSelector
+            selectedTone={selectedTone}
             onToneChange={setSelectedTone}
           />
           <ChatInput

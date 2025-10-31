@@ -138,7 +138,7 @@ export function ConversationsSidebar({
 
       <div
         className={`
-          fixed top-0 left-0 h-full w-96 z-50
+          fixed top-0 left-0 h-full w-[85vw] md:w-[28rem] z-50
           glass-dark border-r border-white/10 dark:border-white/10 
           backdrop-blur-xl transition-transform duration-300 ease-in-out
           flex flex-col
@@ -146,8 +146,8 @@ export function ConversationsSidebar({
           md:translate-x-0
         `}
       >
-        <div className="p-4 border-b border-white/10 dark:border-white/10">
-          <div className="flex items-center justify-between mb-3">
+        <div className="p-3 md:p-4 border-b border-white/10 dark:border-white/10">
+          <div className="flex items-center justify-between mb-2 md:mb-3">
             <h2 className="text-sm font-bold font-montserrat bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Conversations
             </h2>
@@ -155,55 +155,54 @@ export function ConversationsSidebar({
               variant="ghost"
               size="icon"
               onClick={onClose}
-              className="md:hidden rounded-full h-8 w-8 hover:bg-white/10"
+              className="md:hidden rounded-full h-7 w-7 md:h-8 md:w-8 hover:bg-white/10 touch-manipulation"
             >
               <X className="h-4 w-4" />
             </Button>
           </div>
           <Button
             onClick={handleNewChat}
-            className="w-full glass-light hover:glass border-white/10 rounded-xl transition-all duration-200 h-9 text-xs font-medium font-poppins text-foreground"
+            className="w-full glass-light hover:glass border-white/10 rounded-lg md:rounded-xl transition-all duration-200 h-8 md:h-9 text-xs font-medium font-poppins text-foreground touch-manipulation"
           >
-            <Plus className="h-4 w-4 mr-2" />
+            <Plus className="h-3 w-3 md:h-4 md:w-4 mr-2" />
             New Conversation
           </Button>
         </div>
 
-        <ScrollArea className="flex-1 px-4 py-2">
+        <ScrollArea className="flex-1 px-3 md:px-4 py-2">
           {loading ? (
-            <div className="flex items-center justify-center py-8">
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-400" />
+            <div className="flex items-center justify-center py-6 md:py-8">
+              <div className="animate-spin rounded-full h-5 w-5 md:h-6 md:w-6 border-b-2 border-blue-400" />
             </div>
           ) : conversations.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-8 text-center">
-              <MessageSquare className="h-12 w-12 text-foreground/30 mb-3" />
-              <p className="text-xs text-foreground/60">
+            <div className="flex flex-col items-center justify-center py-6 md:py-8 text-center">
+              <MessageSquare className="h-10 w-10 md:h-12 md:w-12 text-foreground/30 mb-2 md:mb-3" />
+              <p className="text-xs text-foreground/60 px-2">
                 No conversations yet. Start a new chat!
               </p>
             </div>
           ) : (
-            <div className="space-y-2">
+            <div className="space-y-1.5 md:space-y-2">
               {conversations.map((conversation) => (
                 <div
                   key={conversation.id}
                   onClick={() => !editingId && onSelectConversation(conversation.id)}
                   className={`
-                    group p-2.5 rounded-xl cursor-pointer border
-                    transition-all duration-200 max-w-full
-                    ${
-                      currentConversationId === conversation.id
-                        ? 'glass border-blue-400/30 bg-blue-500/10'
-                        : 'glass-light hover:glass border-white/10'
+                    group p-2 md:p-2.5 rounded-lg md:rounded-xl cursor-pointer border
+                    transition-all duration-200 max-w-full touch-manipulation
+                    ${currentConversationId === conversation.id
+                      ? 'glass border-blue-400/30 bg-blue-500/10'
+                      : 'glass-light hover:glass border-white/10'
                     }
                   `}
                 >
                   {editingId === conversation.id ? (
-                    <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                    <div className="flex items-center gap-1.5 md:gap-2" onClick={(e) => e.stopPropagation()}>
                       <input
                         type="text"
                         value={editTitle}
                         onChange={(e) => setEditTitle(e.target.value)}
-                        className="flex-1 bg-white/5 border border-white/10 rounded-lg px-2 py-1 text-xs focus:outline-none focus:border-blue-400/50"
+                        className="flex-1 bg-white/5 border border-white/10 rounded-lg px-2 py-1 text-xs focus:outline-none focus:border-blue-400/50 min-h-[32px] md:min-h-[36px]"
                         autoFocus
                         onKeyDown={(e) => {
                           if (e.key === 'Enter') handleRename(conversation.id, e as any)
@@ -214,7 +213,7 @@ export function ConversationsSidebar({
                         variant="ghost"
                         size="icon"
                         onClick={(e) => handleRename(conversation.id, e)}
-                        className="h-6 w-6 rounded-lg hover:bg-green-500/20"
+                        className="h-7 w-7 md:h-6 md:w-6 rounded-lg hover:bg-green-500/20 touch-manipulation"
                       >
                         <Check className="h-3 w-3 text-green-400" />
                       </Button>
@@ -222,29 +221,29 @@ export function ConversationsSidebar({
                         variant="ghost"
                         size="icon"
                         onClick={handleCancelEdit}
-                        className="h-6 w-6 rounded-lg hover:bg-red-500/20"
+                        className="h-7 w-7 md:h-6 md:w-6 rounded-lg hover:bg-red-500/20 touch-manipulation"
                       >
                         <X className="h-3 w-3 text-red-400" />
                       </Button>
                     </div>
                   ) : (
                     <>
-                      <h3 className="text-xs font-medium truncate mb-0.5 font-poppins">
+                      <h3 className="text-xs font-medium truncate mb-0.5 font-poppins pr-12 md:pr-16">
                         {conversation.title}
                       </h3>
                       <div className="flex items-center justify-between">
-                        <p className="text-[10px] text-foreground/50 font-poppins">
+                        <p className="hidden md:block text-[10px] text-foreground/50 font-poppins">
                           {new Date(conversation.updated_at).toLocaleDateString('en-US', {
                             month: 'short',
                             day: 'numeric'
                           })}
                         </p>
-                        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                           <Button
                             variant="ghost"
                             size="icon"
                             onClick={(e) => handleRename(conversation.id, e)}
-                            className="h-5 w-5 rounded-lg hover:bg-blue-500/20"
+                            className="h-6 w-6 md:h-5 md:w-5 rounded-lg hover:bg-blue-500/20 touch-manipulation"
                           >
                             <Edit2 className="h-2.5 w-2.5 text-blue-400" />
                           </Button>
@@ -252,7 +251,7 @@ export function ConversationsSidebar({
                             variant="ghost"
                             size="icon"
                             onClick={(e) => handleDeleteClick(conversation.id, e)}
-                            className="h-5 w-5 rounded-lg hover:bg-red-500/20"
+                            className="h-6 w-6 md:h-5 md:w-5 rounded-lg hover:bg-red-500/20 touch-manipulation"
                           >
                             <Trash2 className="h-2.5 w-2.5 text-red-400" />
                           </Button>
@@ -267,7 +266,7 @@ export function ConversationsSidebar({
         </ScrollArea>
 
         {/* Footer */}
-        <div className="p-4 border-t border-white/10 dark:border-white/10">
+        <div className="p-3 md:p-4 border-t border-white/10 dark:border-white/10">
           <p className="text-[10px] text-foreground/40 text-center">
             {conversations.length} conversation{conversations.length !== 1 ? 's' : ''}
           </p>

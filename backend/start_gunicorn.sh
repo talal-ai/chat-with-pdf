@@ -7,7 +7,7 @@ set -e
 echo "🚀 Starting FastAPI backend with Gunicorn..."
 
 # Navigate to backend directory
-cd /var/www/backend
+cd /var/www/aaoifi-chatbot-backend
 
 # Activate virtual environment
 source .venv/bin/activate
@@ -22,7 +22,7 @@ fi
 # Start Gunicorn with Uvicorn workers
 echo "✅ Starting server on 0.0.0.0:5015 with Gunicorn..."
 gunicorn app.main:app \
-    --workers 2 \
+    --workers 4 \
     --worker-class uvicorn.workers.UvicornWorker \
     --bind 0.0.0.0:5015 \
     --timeout 120 \

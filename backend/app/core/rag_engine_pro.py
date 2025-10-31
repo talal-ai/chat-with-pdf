@@ -583,11 +583,6 @@ Answer the question based on the context above.""",
                 extra_terms={"enforceability", "guarantee", "pledge"},
             )
 
-            # Generate basic follow-up questions for fallback
-            fallback_follow_ups = [
-                "Could you provide more details on this topic?",
-                "How does this relate to other AAOIFI standards?",
-            ]
 
             # Save to chat history if memory is enabled
             if self.memory_enabled:
@@ -596,6 +591,13 @@ Answer the question based on the context above.""",
 
             # Trim memory after fallback response
             self._trim_memory()
+
+            # Provide sensible default follow-up questions for the simple fallback path
+            fallback_follow_ups = [
+                "Would you like me to cite a specific page?",
+                "Should I focus on a particular standard or section?",
+                "Do you want a brief summary or a detailed explanation?",
+            ]
 
             return answer, sources, fallback_follow_ups
 

@@ -2111,7 +2111,7 @@
         "kind": 5,
         "importPath": "backend.app.main",
         "description": "backend.app.main",
-        "peekOfCode": "logger = structlog.get_logger()\nlimiter = Limiter(key_func=get_remote_address)\n@asynccontextmanager\nasync def lifespan(app: FastAPI):\n    \"\"\"Lifespan context manager for startup and shutdown events.\"\"\"\n    # Startup: Just log, don't block - services will initialize on first request\n    logger.info(\"🚀 Application started - services will initialize on first request\")\n    yield  # Application runs here\n    # Shutdown: Clean up resources\n    logger.info(\"👋 Shutting down application...\")",
+        "peekOfCode": "logger = structlog.get_logger()\nlimiter = Limiter(key_func=get_remote_address)\n@asynccontextmanager\nasync def lifespan(app: FastAPI):\n    \"\"\"Lifespan context manager for startup and shutdown events.\"\"\"\n    # Startup: Server binds to port immediately, then pre-warm services in background\n    import asyncio\n    import time\n    logger.info(\"🚀 Starting application...\")\n    # Start pre-warming in background after server is ready",
         "detail": "backend.app.main",
         "documentation": {}
     },
@@ -2120,7 +2120,7 @@
         "kind": 5,
         "importPath": "backend.app.main",
         "description": "backend.app.main",
-        "peekOfCode": "limiter = Limiter(key_func=get_remote_address)\n@asynccontextmanager\nasync def lifespan(app: FastAPI):\n    \"\"\"Lifespan context manager for startup and shutdown events.\"\"\"\n    # Startup: Just log, don't block - services will initialize on first request\n    logger.info(\"🚀 Application started - services will initialize on first request\")\n    yield  # Application runs here\n    # Shutdown: Clean up resources\n    logger.info(\"👋 Shutting down application...\")\napp = FastAPI(",
+        "peekOfCode": "limiter = Limiter(key_func=get_remote_address)\n@asynccontextmanager\nasync def lifespan(app: FastAPI):\n    \"\"\"Lifespan context manager for startup and shutdown events.\"\"\"\n    # Startup: Server binds to port immediately, then pre-warm services in background\n    import asyncio\n    import time\n    logger.info(\"🚀 Starting application...\")\n    # Start pre-warming in background after server is ready\n    async def prewarm_services():",
         "detail": "backend.app.main",
         "documentation": {}
     },
