@@ -370,7 +370,7 @@ Feel free to ask me anything about AAOIFI Standards! How can I assist you today?
 
             self.structured_prompt = CoreChatPromptTemplate.from_messages(
                 [
-                    ("system", tone_system_prompt + "\n\n{format_instructions}\n\nIMPORTANT: The 'answer' field is REQUIRED and must contain your complete response. All other fields are optional metadata."),
+                    ("system", tone_system_prompt + "\n\n{format_instructions}\n\nCRITICAL JSON RULES:\n1. The 'answer' field is REQUIRED and must contain your complete response\n2. Use \\n for newlines (double backslash n), NOT literal newlines\n3. Escape all special characters in strings\n4. All other fields are optional metadata"),
                     (
                         "human",
                         """Context from AAOIFI Sharia Standards:
@@ -381,9 +381,9 @@ Question: {question}
 Previous conversation:
 {chat_history}
 
-Return a valid JSON object. The "answer" field must contain your full response text. Example structure:
+Return ONLY valid JSON. Use \\n for line breaks in the answer field (not literal newlines). Example:
 {{
-  "answer": "Your complete answer here with all the details...",
+  "answer": "Your complete answer here.\\n\\nUse double backslash n for newlines.\\n\\n• Bullet points work like this\\n• Second point",
   "executive_summary": ["Point 1", "Point 2"],
   "sources": ["1", "2"],
   "follow_up_questions": ["Question 1?", "Question 2?"],

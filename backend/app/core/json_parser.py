@@ -6,6 +6,13 @@ from typing import Dict, Any, Optional, List
 import structlog
 from pydantic import ValidationError
 
+try:
+    from json_repair import repair_json
+    JSON_REPAIR_AVAILABLE = True
+except ImportError:
+    JSON_REPAIR_AVAILABLE = False
+    repair_json = None
+
 from app.schemas.qa_response import QAResponse
 
 logger = structlog.get_logger()
@@ -23,6 +30,7 @@ class RobustJSONParser:
         - ```json\n{...}\n```
         - Here is the answer:\n{...}
         - {...} with trailing text
+        - Malformed JSON with control characters
         """
         # Try direct JSON parse first
         try:
@@ -32,15 +40,36 @@ class RobustJSONParser:
             logger.debug(f"Direct JSON parse failed at position {e.pos}: {str(e.msg)}, trying alternatives...")
             pass
 
+        # Try json-repair library if available (handles most malformed JSON)
+        if JSON_REPAIR_AVAILABLE and repair_json:
+            try:
+                repaired = repair_json(text)
+                parsed = json.loads(repaired)
+                if isinstance(parsed, dict):
+                    logger.info("Successfully repaired malformed JSON")
+                    return parsed
+            except Exception as e:
+                logger.debug(f"JSON repair failed: {str(e)}")
+                pass
+
         # Try to extract JSON from code blocks
         code_block_pattern = r"```(?:json)?\s*(\{.*?\})\s*```"
         match = re.search(code_block_pattern, text, re.DOTALL)
         if match:
+            json_str = match.group(1)
+            # Try to fix common issues with newlines in strings
+            json_str = RobustJSONParser._fix_control_chars(json_str)
             try:
-                return json.loads(match.group(1))
+                return json.loads(json_str)
             except json.JSONDecodeError as e:
                 logger.debug(f"Code block JSON parse failed: {str(e.msg)}")
-                pass
+                # Try json-repair on extracted code block
+                if JSON_REPAIR_AVAILABLE and repair_json:
+                    try:
+                        repaired = repair_json(json_str)
+                        return json.loads(repaired)
+                    except Exception:
+                        pass
 
         # Try to find JSON object in text - use a more robust approach
         # Find all potential JSON objects by balancing braces
@@ -64,16 +93,52 @@ class RobustJSONParser:
         # Try parsing all candidates, prefer the longest valid one (most complete)
         candidates.sort(key=len, reverse=True)
         for potential_json in candidates:
+            # Fix control characters
+            fixed_json = RobustJSONParser._fix_control_chars(potential_json)
             try:
-                parsed = json.loads(potential_json)
+                parsed = json.loads(fixed_json)
                 if isinstance(parsed, dict) and len(parsed) > 0:
                     logger.debug(f"Successfully extracted JSON of length {len(potential_json)}")
                     return parsed
             except json.JSONDecodeError as e:
                 logger.debug(f"JSON parse failed at pos {e.pos}: {e.msg}")
+                # Try json-repair as last resort
+                if JSON_REPAIR_AVAILABLE and repair_json:
+                    try:
+                        repaired = repair_json(potential_json)
+                        parsed = json.loads(repaired)
+                        if isinstance(parsed, dict) and len(parsed) > 0:
+                            logger.info("Successfully repaired extracted JSON")
+                            return parsed
+                    except Exception:
+                        pass
                 continue
 
         return None
+
+    @staticmethod
+    def _fix_control_chars(json_str: str) -> str:
+        """Fix common control character issues in JSON strings."""
+        # Replace unescaped newlines within string values
+        # This is a simple heuristic: find ": " followed by content with \n before closing "
+        # More sophisticated: use regex to find string values and escape their content
+        
+        # Simple approach: replace literal \n in JSON strings with \\n
+        # This won't work for all cases but handles the common issue
+        result = json_str
+        
+        # Find all string values in JSON and escape newlines
+        # Pattern: "key": "value with \n in it"
+        pattern = r'":\s*"([^"]*)"'
+        
+        def escape_newlines(match):
+            value = match.group(1)
+            # Escape unescaped newlines and tabs
+            value = value.replace('\n', '\\n').replace('\r', '\\r').replace('\t', '\\t')
+            return f'": "{value}"'
+        
+        result = re.sub(pattern, escape_newlines, result)
+        return result
 
     @staticmethod
     def parse_to_qa_response(text: str) -> Optional[QAResponse]:
